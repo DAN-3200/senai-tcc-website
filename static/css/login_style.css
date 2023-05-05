@@ -1,0 +1,164 @@
+*{
+
+    font-family:'Josefin Sans', sans-serif;
+}
+body {
+    background: rgb(111,82,255);
+    background: linear-gradient(90deg, rgba(111,82,255,1) 0%, rgba(232,122,255,1) 100%);
+   
+}
+
+main{
+    width: 1200px;
+    height: 550px;
+    margin: auto;
+    margin-top: 50px;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    
+}
+
+
+/* Login ------------------------------> */
+.login{
+    max-height: 500px;
+    max-width: 400px;
+    padding: 30px 0px;
+    width: 100%;
+    /*Visual*/
+    background-color: white;
+    border-radius: 10px;
+    margin: 0px 25px 0px 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    animation: reveal 1s;
+}
+
+.formulario h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #6c63ff;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+
+.login form{
+    height: 100%;
+    width: 100%;
+}
+
+.formulario{
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    
+    justify-content: center;
+    grid-template-rows: 20% 30% 20% 30%;
+}
+
+.boxInput{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.boxInput input[type='text'], input[type='password']{
+    font-size: 16px;
+    width: 300px;
+    height: 30px;
+    padding: 0.8rem 1.2rem;
+
+    /* Visual */
+    background-color: rgb(230, 230, 230);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.boxInput input[type='text']:hover, input[type='password']:hover{
+    background: rgb(238, 238, 238);
+}
+
+.boxInput input[type='text']:focus-visible, input[type='password']:focus-visible{
+    outline: 1px solid #6c63ff
+}
+.boxButton{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.boxButton input{
+    background-color: #6F52FF;
+    color:white;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    transition: 0.2s;
+    margin-top: 30px ;
+}
+
+.boxButton input:hover{
+    cursor: pointer;
+    background-color: #6b63fff1;
+    transition: 0.1s;
+    padding-left: 15px;
+}
+
+#CB {
+    /* Oculta o checkbox padrão */
+    display: none;
+}
+
+label {
+    /* Adiciona estilo básico para a etiqueta */
+    display: inline-block;
+    padding: 4px;
+    height: 5px;
+    width: 5px;
+    border: 2px solid #28282b;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#CB:checked + label {
+    /* Estilo personalizado para o checkbox selecionado */
+    background: rgb(111,82,255);
+    animation: trans-color 1s;
+}
+
+@keyframes trans-color {
+    from{ 
+        background: rgb(220, 213, 255);
+    }
+}
+  
+/*Banner ------------------------------> */
+.banner{
+    width: 100%;
+    max-width: 1000px;
+
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    animation: reveal 1s;
+  
+}
+
+@keyframes reveal {
+    from {transform: translateX(-50px);}
+    to {}
+}

@@ -1,0 +1,25 @@
+{% extends "layout/home/home.html" %}
+
+{% block content %}
+    {% for i in box %}
+        <form class="card" action="" method="PUT" id="{{i}}"> {# Objeto 'x' #}
+            <div class="title-card">
+              <textarea placeholder="Título" maxlength="40" name="title" id="title">{{ i._title }}</textarea>
+            </div>
+            <div class="content-card">
+              <textarea placeholder="Digite..." maxlength="1000" name="content" id="content">{{ i._content }}</textarea>
+            </div>
+            <div class="tools-card">
+                <button type="submit" class="submit" href="{{ url_for('Update') }} form="{{i}}"> SAVE </button>
+                <select name="prioridade">
+                <option value="1">Grau I</option>
+                <option value="2">Grau II</option>
+                <option value="3">Grau III</option>
+                </select>
+                <button class="excluir" type="button">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        </form>
+    {% endfor %}
+{% endblock %}
