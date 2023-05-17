@@ -1,0 +1,23 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+    <main style="grid-template-columns: auto">
+    <form class="card" action="{{ url_for('Update', index=card.id_card) }}" method="POST" id="envio">
+        <div class="title-card">
+          <textarea placeholder="Título" maxlength="40" name="title" id="title">{{ card.title }}</textarea>
+        </div>
+        <div class="content-card">
+          <textarea placeholder="Digite..." maxlength="1000" name="content" id="content">{{ card.content }}</textarea>
+        </div>
+        <div class="tools-card">
+            <button type="submit" class="save-action" form="envio">SAVE</button>
+            <select name="priority">
+            <option value="1">Grau I</option>
+            <option value="2">Grau II</option>
+            <option value="3">Grau III</option>
+            </select>
+            <a class="excluir" style="font-size: 14px " type="button" href="{{ url_for('Delete', index=card.id_card) }}"><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+    </form>
+    </main>
+{% endblock%}

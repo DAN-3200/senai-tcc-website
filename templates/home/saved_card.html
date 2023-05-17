@@ -1,0 +1,8 @@
+
+{% for card in box %}
+  <div class="saved-card">
+    <a class="sav-card-show" href="{{ url_for('Update', index=card.id_card) }}"><span>{{ card.title  }}</span></a>
+    <a class="excluir" style="font-size: 14px " type="button" href="{{ url_for('Delete', index=card.id_card) }}"><i class="fa-solid fa-trash-can"></i></a>
+  </div>
+{% endfor %}
+

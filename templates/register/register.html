@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="../../../static/css/register_style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/register_style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300&family=Josefin+Sans&family=Nunito+Sans:wght@300&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
@@ -17,10 +17,11 @@
 <body>
     <div class="container">
         <div class="form-img">
-            <img src="/img/Setup-bro.png" width="100%" alt="">
+            <img src="/static/Setup-bro.png" width="100%" alt="">
         </div>
         <div class="form">
-            <form action="#">
+            <form action="#" method="POST">
+                {{ form.csrf_token }}
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastre-se</h1>
@@ -29,33 +30,34 @@
 
                 <div class="input-group">
                     <div class="input-box">
-                        <label for="firstname">Primeiro Nome</label>
-                        <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+                        {{ form.nome.label(class="boxInput input") }}
+                        {{ form.nome(class="boxInput input", placeholder="Digite seu primeiro nome") }}
                     </div>
 
                     <div class="input-box">
-                        <label for="lastname">Sobrenome</label>
-                        <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
+                        {{ form.sobrenome.label(class="boxInput input") }}
+                        {{ form.sobrenome(class="boxInput input", placeholder="Digite seu sobrenome") }}
                     </div>
                     <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                        {{ form.email.label(class="boxInput input") }}
+                        {{ form.email(class="boxInput input", placeholder="Digite seu e-mail") }}
                     </div>
 
                     <div class="input-box">
-                        <label for="password">Senha</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                        {{ form.numero.label(class="boxInput input") }}
+                        {{ form.numero(class="boxInput input", placeholder="(xx) xxxx-xxxx") }}
+                    </div>
+
+                    <div class="input-box">
+                        {{ form.senha.label(class="boxInput input") }}
+                        {{ form.senha(class="boxInput input", placeholder="Digite sua senha") }}
                     </div>
 
 
                     <div class="input-box">
-                        <label for="confirmPassword">Confirme sua Senha</label>
-                        <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required>
+                        {{ form.confirmacao.label(class="boxInput input") }}
+                        {{ form.confirmacao(class="boxInput input", placeholder="Digite sua senha novamente" ) }}
+
                     </div>
 
                 </div>
@@ -89,7 +91,7 @@
                 </div>
 
                 <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
+                    {{ form.criar(class="button a ") }}
                 </div>
             </form>
         </div>
