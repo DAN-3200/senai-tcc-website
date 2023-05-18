@@ -6,9 +6,11 @@ class perfil(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     nome = db.Column(db.String(50), nullable=False)
+    senha = db.Column(db.String(10), nullable=False)
 
-    def __init__(self, nome):
+    def __init__(self, nome, senha):
         self.nome = nome
+        self.senha = senha
 
 class card(db.Model):
     __tablename__ = 'cards'

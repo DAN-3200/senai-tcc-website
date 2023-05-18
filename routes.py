@@ -1,13 +1,35 @@
+# Objetivo: CRUD de Cards vinculado ao BANCO
 from flask import render_template, request, url_for, redirect
-from models.model import card
-from main import db, app
 
-@app.route('/', methods=['GET']) # Raiz do endereço http
+# coisa minha :)
+from models.model import card, perfil
+from main import db, app
+from forms.regis_form import formRegis
+
+# Entrada ------------
+@app.route('/', methods=['POST','GET'])
+def login():
+    return render_template('login/login.html')
+@app.route('/register', methods=['POST','GET'])
+def register():
+    if request.method == 'POST':
+        print(request.form)
+
+        db.session.add(perfil(request.form.get('nome'), request.form.get('senha')))
+        db.session.commit()
+
+        return redirect(url_for('login'))
+
+    return render_template('register/cadastro.html', form=formRegis())
+
+
+# DashBoard ----------
+@app.route('/home', methods=['GET']) # Raiz do endereço http
 def Home():
     cards = card.query.all()
     return render_template('home/criar.html', box=cards)
 
-@app.route('/', methods=['POST'])
+@app.route('/home', methods=['POST'])
 def Create():
     if request.method == 'POST':
         # Request
@@ -21,7 +43,7 @@ def Create():
 
     return redirect(url_for('Home'))
 
-@app.route('/update/<index>', methods=['GET', 'POST'])
+@app.route('/home/update/<index>', methods=['GET', 'POST'])
 def Update(index):
     my_card = card.query.get(index)
     if request.method == 'POST':
@@ -36,7 +58,7 @@ def Update(index):
     else:
         return render_template('home/editar.html', card=my_card)
 
-@app.route('/delete/<index>', methods=['GET', 'POST'])
+@app.route('/home/delete/<index>', methods=['GET', 'POST'])
 def Delete(index):
     my_card = card.query.get(index)
     db.session.delete(my_card)

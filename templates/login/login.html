@@ -15,29 +15,27 @@
    <main>
         <div class="login">
             <form action="" method="post">
-                {{ form.csrf_token }}
                 <div class="formulario">
                     <h1>Login</h1>
                     <div class="boxInput">
-                            {{ form.email(class="boxButton", placeholder="Digite seu email") }}
-                            {{ form.senha(class="boxButton input", placeholder="Digite sua senha") }}
+                        <input type="text">
+                        <input type="text">
                         <div style="display: flex; gap: 10px; align-items:center;  align-content: center;">
                             <input type="checkbox" name="" id="CB">
                             <label for="CB"></label>
                             <p style="color:rgb(126, 126, 126);position: relative; top: 1px">Lembre-se</p>
-
                         </div>
                     </div>
                     <div class="boxButton">
-                        {{ form.SingUp(class="boxButton") }}
-                        {{ form.SingIn(class="boxButton") }}
+                        <a style="text-decoration: none" href="{{ url_for('register') }}"><div class="button-flask" > inscrever-se </div></a>
+                        <input class="button-flask" type="submit" value="entrar">
                     </div>
                     <p style="position: relative; top: 30px; color:rgb(126, 126, 126); justify-self: center;">@Developer in Senai</p>
                 </div>
             </form>
         </div>
         <div class="banner">
-            <img src="/static/Setup-bro.png" alt="" style="width: 90%;">
+            <img src="{{ url_for('static', filename = 'img/Setup-bro.png') }}" alt="" style="width: 90%;">
         </div>
     </main>
 </body>

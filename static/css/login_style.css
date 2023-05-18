@@ -99,22 +99,29 @@ main{
     gap: 10px;
 }
 
-.boxButton input{
+.button-flask{
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
     background-color: #6F52FF;
     color:white;
-    width: 80px;
+    max-width: 7vw;
     height: 30px;
     border-radius: 5px;
     border: none;
     transition: 0.2s;
     margin-top: 30px ;
+
+
+    padding: 5px;
 }
 
-.boxButton input:hover{
+.button-flask:hover{
     cursor: pointer;
     background-color: #6b63fff1;
     transition: 0.1s;
-    padding-left: 15px;
+    padding-left: 7.5px;
 }
 
 #CB {
