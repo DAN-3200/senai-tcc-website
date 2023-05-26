@@ -1,15 +1,46 @@
-# Objetivo: CRUD de Cards vinculado ao BANCO
-from flask import render_template, request, url_for, redirect
+# Parte lógica do site - Exibir páginas, Enviar dados ao banco...
+from flask import (
+    render_template,
+    request,
+    url_for,
+    redirect
+)
+
+from flask_login import (
+    login_user,
+    logout_user
+)
 
 # coisa minha :)
 from models.model import card, perfil
-from main import db, app
+from main import app, db, lm
 from forms.regis_form import formRegis
+
+@lm.user_loader
+def user_loader(id):
+    return perfil.query.get(id)
 
 # Entrada ------------
 @app.route('/', methods=['POST','GET'])
 def login():
+    if request.method == "POST":
+        nome = request.form.get('nome')
+        senha = request.form.get('senha')
+        # remember = True if request.form.get('remember') else False
+
+        user = perfil.query.filter_by(nome=nome).first()
+        # print(f"{user}/{user.senha}")
+        if user and user.senha == senha:
+            login_user(user)
+            return redirect(url_for('Home'))
+
     return render_template('login/login.html')
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
 @app.route('/register', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
@@ -21,7 +52,6 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register/cadastro.html', form=formRegis())
-
 
 # DashBoard ----------
 @app.route('/home', methods=['GET']) # Raiz do endereço http

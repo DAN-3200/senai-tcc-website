@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Tunes\PycharmProjects\flaskProject\venv"
+VIRTUAL_ENV="C:\Users\barro\Documents\Back-end\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
