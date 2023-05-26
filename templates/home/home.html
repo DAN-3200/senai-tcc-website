@@ -24,11 +24,10 @@
             <button type="button"><i class="fa-solid fa-trash-can"></i></button>
         </div>
       </div>
-        <a class="perfil-btn" href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <a href="{{ url_for('logout') }}"><button class="perfil-btn"><i class="fa-solid fa-right-from-bracket"></i></button></a>
     </div>
   </nav>
     {% block content %}
     {% endblock %}
-
 </body>
 </html>

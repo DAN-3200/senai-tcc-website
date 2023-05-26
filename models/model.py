@@ -24,12 +24,14 @@ class card(db.Model):
     content = db.Column(db.String(2000))
     priority = db.Column(db.String(255))
     delete = db.Column(db.Boolean)
-    # fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'))
+    fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
 
-    def __init__(self, title, content, priority):
+    def __init__(self, title, content, priority, user):
         self.title = title
         self.content = content
         self.priority = priority
+        self.fk_user = user
         self.delete = False
+
 
 

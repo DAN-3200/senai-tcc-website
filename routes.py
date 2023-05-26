@@ -5,10 +5,10 @@ from flask import (
     url_for,
     redirect
 )
-
 from flask_login import (
-    login_user,
-    logout_user
+    login_user, # Introduz o usuário na sessão
+    logout_user, # Retira o usuário da sessão
+    current_user # pega o usuário da sessão
 )
 
 # coisa minha :)
@@ -23,6 +23,7 @@ def user_loader(id):
 # Entrada ------------
 @app.route('/', methods=['POST','GET'])
 def login():
+    print(current_user)
     if request.method == "POST":
         nome = request.form.get('nome')
         senha = request.form.get('senha')
@@ -56,7 +57,8 @@ def register():
 # DashBoard ----------
 @app.route('/home', methods=['GET']) # Raiz do endereço http
 def Home():
-    cards = card.query.all()
+    print(f"{current_user.id}|{current_user}")
+    cards = card.query.filter_by(fk_user=current_user.id)
     return render_template('home/criar.html', box=cards)
 
 @app.route('/home', methods=['POST'])
@@ -66,9 +68,10 @@ def Create():
         title = request.form['title']
         content = request.form['content']
         priority = request.form['priority']
+        user = current_user.id
 
         # Envio ao banco
-        db.session.add(card(title=title, content=content, priority=priority))
+        db.session.add(card(title=title, content=content, priority=priority, user=user))
         db.session.commit()
 
     return redirect(url_for('Home'))
