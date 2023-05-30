@@ -1,16 +1,12 @@
-Se o ambiente virtual der problema, apague e escreva no terminal:
+Se o ambiente virtual der problema, apague-o e escreva no terminal:
     
     python -m venv venv
     ./venv/Scripts/activate
 
 importações: 
     
-    pip install{
-        flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login
-    }
-
-
-
+    pip install flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login
+  
 Fontes: 
 
     https://www.freecodecamp.org/news/how-to-authenticate-users-in-flask/ ,
