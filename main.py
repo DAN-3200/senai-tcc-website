@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -17,6 +17,8 @@ db = SQLAlchemy(app)
 
 # Flask-Login --------------
 lm = LoginManager()
+lm.login_view = '/'
+
 lm.init_app(app)
 
 

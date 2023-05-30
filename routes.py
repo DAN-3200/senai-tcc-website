@@ -1,4 +1,5 @@
 # Parte lógica do site - Exibir páginas, Enviar dados ao banco...
+import flask_login
 from flask import (
     render_template,
     request,
@@ -10,6 +11,7 @@ from flask_login import (
     logout_user, # Retira o usuário da sessão
     current_user # pega o usuário da sessão
 )
+from flask_login import login_required
 
 # coisa minha :)
 from models.model import card, perfil
@@ -38,6 +40,7 @@ def login():
     return render_template('login/login.html')
 
 @app.route('/logout', methods=['GET', 'POST'])
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
@@ -56,6 +59,7 @@ def register():
 
 # DashBoard ----------
 @app.route('/home', methods=['GET']) # Raiz do endereço http
+@login_required
 def Home():
     print(f"{current_user.id}|{current_user}")
     cards = card.query.filter_by(fk_user=current_user.id)
