@@ -7,11 +7,14 @@ class perfil(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     nome = db.Column(db.String(50), nullable=False)
-    senha = db.Column(db.String(10), nullable=False)
+    email = db.Column(db.String(50), nullable=False)
+    senha = db.Column(db.String(15), nullable=False)
 
-    def __init__(self, nome, senha):
+
+    def __init__(self, nome, senha, email):
         self.nome = nome
         self.senha = senha
+        self.email = email
 
     def __repr__(self):
         return '<User %r>' % self.nome
@@ -33,5 +36,7 @@ class card(db.Model):
         self.fk_user = user
         self.delete = False
 
+    def __repr__(self):
+        return f'<Card #{self.id_card}>'
 
 

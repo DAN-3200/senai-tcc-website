@@ -1,43 +1,39 @@
-# Parte lógica do site - Exibir páginas, Enviar dados ao banco...
-import flask_login
 from flask import (
-    render_template,
-    request,
-    url_for,
-    redirect
+    render_template, # Renderizar Pagina
+    request, # Pegar informações enviadas pelos forms
+    url_for, # Caminho url do arquivo
+    redirect # Redirecionar a uma função
 )
 from flask_login import (
     login_user, # Introduz o usuário na sessão
     logout_user, # Retira o usuário da sessão
-    current_user # pega o usuário da sessão
+    current_user, # pega o usuário da sessão
+    login_required, # Restringir o Usuário de acessar certas views
 )
-from flask_login import login_required
 
 # coisa minha :)
-from models.model import card, perfil
 from main import app, db, lm
-from forms.regis_form import formRegis
+from models.model import card, perfil
+from forms.regis_form import formRegister, formLogin
 
-@lm.user_loader
+@lm.user_loader # ainda não sei pra que serve isso, mas é necessário pra o Login-Manager
 def user_loader(id):
     return perfil.query.get(id)
 
-# Entrada ------------
-@app.route('/', methods=['POST','GET'])
+# -- Login/Register
+@app.route('/', methods=['POST','GET']) # Raiz do endereço http
 def login():
-    print(current_user)
     if request.method == "POST":
         nome = request.form.get('nome')
         senha = request.form.get('senha')
         # remember = True if request.form.get('remember') else False
 
         user = perfil.query.filter_by(nome=nome).first()
-        # print(f"{user}/{user.senha}")
         if user and user.senha == senha:
             login_user(user)
             return redirect(url_for('Home'))
 
-    return render_template('login/login.html')
+    return render_template('login/login.html', form=formLogin())
 
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -48,17 +44,15 @@ def logout():
 @app.route('/register', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
-        print(request.form)
-
-        db.session.add(perfil(request.form.get('nome'), request.form.get('senha')))
+        db.session.add(perfil(request.form.get('nome'), request.form.get('senha'), request.form.get('email')))
         db.session.commit()
 
         return redirect(url_for('login'))
 
-    return render_template('register/cadastro.html', form=formRegis())
+    return render_template('register/register.html', form=formRegister())
 
-# DashBoard ----------
-@app.route('/home', methods=['GET']) # Raiz do endereço http
+# -- CRUD de notas
+@app.route('/home', methods=['GET'])
 @login_required
 def Home():
     print(f"{current_user.id}|{current_user}")
@@ -66,6 +60,7 @@ def Home():
     return render_template('home/criar.html', box=cards)
 
 @app.route('/home', methods=['POST'])
+@login_required
 def Create():
     if request.method == 'POST':
         # Request
@@ -81,6 +76,7 @@ def Create():
     return redirect(url_for('Home'))
 
 @app.route('/home/update/<index>', methods=['GET', 'POST'])
+@login_required
 def Update(index):
     my_card = card.query.get(index)
     if request.method == 'POST':
@@ -96,6 +92,7 @@ def Update(index):
         return render_template('home/editar.html', card=my_card)
 
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
+@login_required
 def Delete(index):
     my_card = card.query.get(index)
     db.session.delete(my_card)
@@ -103,8 +100,11 @@ def Delete(index):
 
     return redirect(url_for('Home'))
 
+
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    return render_template('register/cadastro.html')
+
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
-
-    # debug=True - adapta a exibição a qualquer alteração feita no codigo em tempo real
+    app.run(debug=True) # 'debug=True' - adapta a exibição a qualquer alteração feita no codigo em tempo real

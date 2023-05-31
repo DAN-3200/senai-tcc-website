@@ -14,12 +14,13 @@
 <body>
    <main>
         <div class="login">
+
             <form action="{{ url_for('login') }}" method="POST">
                 <div class="formulario">
                     <h1>Login</h1>
                     <div class="boxInput">
-                        <input name="nome" type="text">
-                        <input name="senha" type="text">
+                        {{ form.nome }}
+                        {{ form.senha }}
                         <div style="display: flex; gap: 10px; align-items:center;  align-content: center;">
                             <input type="checkbox" name="remember" id="CB">
                             <label for="CB"></label>
