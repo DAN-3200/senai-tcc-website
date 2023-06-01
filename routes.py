@@ -103,7 +103,7 @@ def Delete(index):
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    return render_template('register/cadastro.html')
+    return render_template('test/T1.html')
 
 if __name__ == '__main__':
     db.create_all()
