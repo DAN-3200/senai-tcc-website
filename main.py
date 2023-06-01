@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 
 # Definições de App ----------------------------------------------------------
 app = Flask(__name__)
@@ -13,15 +14,16 @@ app.app_context().push()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'nome-seguro-baby'
 
-# Instâncias ------------------------------------------------------------------
+# Instâncias -------
 
 # -- Database
 db = SQLAlchemy(app)
-
 # -- Flask-Login
 lm = LoginManager()
 lm.login_view = '/'
 lm.init_app(app)
+# -- Flask-Bcrypt
+by = Bcrypt(app)
 
 
 

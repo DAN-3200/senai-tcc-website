@@ -3,9 +3,9 @@ Se o ambiente virtual der problema, apague-o e escreva no terminal:
     python -m venv venv
     ./venv/Scripts/activate
 
-importações: 
-    
-    pip install flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login
+importações:
+
+    pip install flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login flask_bcrypt
   
 Fontes: 
 

@@ -19,8 +19,8 @@
                 <div class="formulario">
                     <h1>Login</h1>
                     <div class="boxInput">
-                        {{ form.nome }}
-                        {{ form.senha }}
+                        {{ form.nome(placeholder="Digite seu Usuário") }}
+                        {{ form.senha(placeholder="Digite sua Senha") }}
                         <div style="display: flex; gap: 10px; align-items:center;  align-content: center;">
                             <input type="checkbox" name="remember" id="CB">
                             <label for="CB"></label>

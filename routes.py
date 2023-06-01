@@ -12,7 +12,7 @@ from flask_login import (
 )
 
 # coisa minha :)
-from main import app, db, lm
+from main import app, db, lm, by
 from models.model import card, perfil
 from forms.regis_form import formRegister, formLogin
 
@@ -29,7 +29,7 @@ def login():
         # remember = True if request.form.get('remember') else False
 
         user = perfil.query.filter_by(nome=nome).first()
-        if user and user.senha == senha:
+        if user and by.check_password_hash(user.senha, senha):
             login_user(user)
             return redirect(url_for('Home'))
 
@@ -44,9 +44,12 @@ def logout():
 @app.route('/register', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
-        db.session.add(perfil(request.form.get('nome'), request.form.get('senha'), request.form.get('email')))
+        db.session.add(perfil(
+            nome=request.form.get('nome'),
+            senha=by.generate_password_hash(request.form.get('senha')), # senha scriptada
+            email=request.form.get('email')
+        ))
         db.session.commit()
-
         return redirect(url_for('login'))
 
     return render_template('register/register.html', form=formRegister())
@@ -99,7 +102,6 @@ def Delete(index):
     db.session.commit()
 
     return redirect(url_for('Home'))
-
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
