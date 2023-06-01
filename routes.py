@@ -1,5 +1,5 @@
 from flask import (
-    render_template, # Renderizar Pagina
+    render_template, # Renderizar Página
     request, # Pegar informações enviadas pelos forms
     url_for, # Caminho url do arquivo
     redirect # Redirecionar a uma função
