@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro</title>
+    <title>Zona de Testes</title>
+    <style>
+        .visual{
+            border: 2px solid silver;
+            border-radius: 5px;
+            outline: none;
+            padding: 5px;
+        }
+
+        .visual:hover{
+            transition: 0.3s;
+            border: 2px solid #6959CD;
+        }
+
+        .visual:focus-visible{
+            border: 2px solid #483D8B;
+        }
+    </style>
 </head>
 <body>
-    <div class="div" contenteditable="True" spellcheck="True" role="textbox" aria-multiline="True" dir="ltr" tabindex="0"></div>
+    <form action="{{ url_for('test') }}" method="POST">
+        <input type="submit">
+        <input name="pomp" type="text">
+        <br><br>
+        <div class="div visual" name="NOTE" contenteditable="True" spellcheck="True" role="textbox" aria-multiline="True" dir="ltr" tabindex="0"></div>
+    </form>
 </body>
 </html>

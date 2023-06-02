@@ -105,6 +105,8 @@ def Delete(index):
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
+    if request.method == "POST":
+        print(request.form)
     return render_template('test/T1.html')
 
 if __name__ == '__main__':
