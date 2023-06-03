@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{usuario_db}:{s
 app.app_context().push()
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'nome-seguro-baby'
+app.config['SECRET_KEY'] = 'ab44d789595b66efeda6b633e686a9db'
 
 # Instâncias -------
 
