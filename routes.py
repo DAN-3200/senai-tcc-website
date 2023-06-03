@@ -105,7 +105,7 @@ def Delete(index):
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    return render_template('test/T1.html')
+    return render_template('test/new_index.html')
 
 if __name__ == '__main__':
     db.create_all()
