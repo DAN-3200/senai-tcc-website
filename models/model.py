@@ -10,7 +10,6 @@ class perfil(db.Model, UserMixin):
     email = db.Column(db.String(50), nullable=False, unique=True)
     senha = db.Column(db.String(100), nullable=False)
 
-
     def __init__(self, nome, senha, email):
         self.nome = nome
         self.senha = senha
@@ -38,5 +37,3 @@ class card(db.Model):
 
     def __repr__(self):
         return f'<Card #{self.id_card}>'
-
-

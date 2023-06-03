@@ -10,9 +10,13 @@ from flask_login import (
     current_user, # pega o usuário da sessão
     login_required, # Restringir o Usuário de acessar certas views
 )
-
 # coisa minha :)
-from main import app, db, lm, by
+from main import (
+    app, # Aplicação
+    db, # Database
+    lm, # Login Manage
+    by # Flask-Bcrypt
+)
 from models.model import card, perfil
 from forms.Forms import formRegister, formLogin
 
@@ -44,7 +48,6 @@ def logout():
 @app.route('/register', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
-
         if request.form.get('senha') == request.form.get('c_senha'):
             db.session.add(perfil(
                 nome=request.form.get('nome'),
