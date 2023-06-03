@@ -14,7 +14,7 @@ from flask_login import (
 # coisa minha :)
 from main import app, db, lm, by
 from models.model import card, perfil
-from forms.regis_form import formRegister, formLogin
+from forms.Forms import formRegister, formLogin
 
 @lm.user_loader # ainda não sei pra que serve isso, mas é necessário pra o Login-Manager
 def user_loader(id):
@@ -44,13 +44,15 @@ def logout():
 @app.route('/register', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
-        db.session.add(perfil(
-            nome=request.form.get('nome'),
-            senha=by.generate_password_hash(request.form.get('senha')), # senha scriptada
-            email=request.form.get('email')
-        ))
-        db.session.commit()
-        return redirect(url_for('login'))
+
+        if request.form.get('senha') == request.form.get('c_senha'):
+            db.session.add(perfil(
+                nome=request.form.get('nome'),
+                senha=by.generate_password_hash(request.form.get('senha')), # senha scriptada
+                email=request.form.get('email')
+            ))
+            db.session.commit()
+            return redirect(url_for('login'))
 
     return render_template('register/register.html', form=formRegister())
 
