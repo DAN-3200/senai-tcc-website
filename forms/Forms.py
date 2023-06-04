@@ -4,10 +4,10 @@ from wtforms.validators import DataRequired, Length, EqualTo
 from models.model import perfil
 
 class formRegister(FlaskForm):
-    nome = StringField('nome', validators=[DataRequired(), Length(4, 20)])
-    email = EmailField('email', validators=[DataRequired(), Length(10, 60)])
-    senha = PasswordField('senha', validators=[DataRequired(), Length(4, 15)])
-    c_senha = PasswordField('c_senha', validators=[DataRequired(), Length(4, 15), EqualTo('senha')])
+    nome = StringField('nome', validators=[DataRequired(), Length(4, 40)])
+    email = EmailField('email', validators=[DataRequired(), Length(10, 100)])
+    senha = PasswordField('senha', validators=[DataRequired(), Length(4, 20)])
+    c_senha = PasswordField('c_senha', validators=[DataRequired(), Length(4, 20), EqualTo('senha')])
 
     submit = SubmitField('continue')
 
@@ -21,10 +21,9 @@ class formRegister(FlaskForm):
         if Email:
             raise ValidationError('Esse Email já existe')
 
-
 class formLogin(FlaskForm):
-    nome = StringField('nome', validators=[DataRequired(), Length(4, 20)])
-    senha = PasswordField('senha', validators=[DataRequired(), Length(4, 10)])
+    nome = StringField('nome', validators=[DataRequired(), Length(4, 100)])
+    senha = PasswordField('senha', validators=[DataRequired(), Length(4, 20)])
     remember = BooleanField("remember")
 
     submit = SubmitField('entrar')

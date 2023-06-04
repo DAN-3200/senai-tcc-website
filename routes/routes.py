@@ -15,7 +15,7 @@ from main import (
     app, # Aplicação
     db, # Database
     lm, # Login Manage
-    by # Flask-Bcrypt
+    by, # Flask-Bcrypt
 )
 from models.model import card, perfil
 from forms.Forms import formRegister, formLogin
@@ -113,6 +113,3 @@ def Delete(index):
 def test():
     return render_template('test/new_index.html')
 
-if __name__ == '__main__':
-    db.create_all()
-    app.run(debug=True) # 'debug=True' - adapta a exibição a qualquer alteração feita no codigo em tempo real

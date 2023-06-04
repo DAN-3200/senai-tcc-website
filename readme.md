@@ -5,7 +5,8 @@ Se o ambiente virtual der problema, apague-o e escreva no terminal:
 
 importações:
 
-    pip install flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login flask_bcrypt
+    pip install flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login flask_bcrypt flask_migrate
+
   
 Fontes: 
 
