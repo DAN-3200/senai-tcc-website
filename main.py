@@ -7,7 +7,7 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 
 # -- Vincular ao banco
-usuario_db = "root" ; senha_db = "root" ; banco_db = "bank"
+usuario_db = "root" ; senha_db = "123456" ; banco_db = "bank"
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{usuario_db}:{senha_db}@localhost:3306/{banco_db}'
 app.app_context().push()
 
@@ -18,10 +18,14 @@ app.config['SECRET_KEY'] = 'ab44d789595b66efeda6b633e686a9db'
 
 # -- Database
 db = SQLAlchemy(app)
+
 # -- Flask-Login
 lm = LoginManager()
 lm.login_view = '/'
+lm.login_message = 'realize o Login para prosseguir'
+lm.login_message_category = 'alert alert-warning'
 lm.init_app(app)
+
 # -- Flask-Bcrypt
 by = Bcrypt(app)
 

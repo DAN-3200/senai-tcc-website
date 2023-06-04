@@ -20,14 +20,14 @@
                         {{ form.nome(placeholder="Digite seu Usuário") }}
                         {{ form.senha(placeholder="Digite sua Senha") }}
                         <div style="display: flex; gap: 10px; align-items:center;  align-content: center;">
-                            <input type="checkbox" name="remember" id="CB">
+                            {{ form.remember(id="CB")}}
                             <label for="CB"></label>
                             <p style="color:rgb(126, 126, 126);position: relative; top: 1px">Lembre-se</p>
                         </div>
                     </div>
                     <div class="boxButton">
                         <a style="text-decoration: none" href="{{ url_for('register') }}"><div class="button-flask" > inscrever-se </div></a>
-                        <input class="button-flask" type="submit" value="entrar">
+                        {{ form.submit(class="button-flask") }}
                     </div>
                     <p style="position: relative; top: 30px; color:rgb(126, 126, 126); justify-self: center;">@Developer in Senai</p>
                 </div>

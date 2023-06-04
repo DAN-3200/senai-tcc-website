@@ -27,14 +27,15 @@ def user_loader(id):
 # -- Login/Register
 @app.route('/', methods=['POST','GET']) # Raiz do endereço http
 def login():
+    # Agora Loga tanto com Username quanto com Email
     if request.method == "POST":
         nome = request.form.get('nome')
         senha = request.form.get('senha')
-        # remember = True if request.form.get('remember') else False
+        remember = True if request.form.get('remember') else False
 
-        user = perfil.query.filter_by(nome=nome).first()
+        user = perfil.query.filter_by(nome=nome).first() or perfil.query.filter_by(email=nome).first()
         if user and by.check_password_hash(user.senha, senha):
-            login_user(user)
+            login_user(user, remember=remember)
             return redirect(url_for('Home'))
 
     return render_template('login/login.html', form=formLogin())
@@ -65,7 +66,7 @@ def register():
 def Home():
     print(f"{current_user.id}|{current_user}")
     cards = card.query.filter_by(fk_user=current_user.id)
-    return render_template('home/criar.html', box=cards)
+    return render_template('home/criar.html', box=cards, user=current_user)
 
 @app.route('/home', methods=['POST'])
 @login_required

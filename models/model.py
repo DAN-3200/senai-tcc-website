@@ -6,7 +6,7 @@ class perfil(db.Model, UserMixin):
     __tablename__ = 'perfil'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    nome = db.Column(db.String(50), nullable=False)
+    nome = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(50), nullable=False, unique=True)
     senha = db.Column(db.String(100), nullable=False)
 
