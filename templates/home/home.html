@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>Home</title>
   <link href="{{ url_for('static', filename='css/home_style.css')}}" rel="stylesheet" type="text/css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
@@ -22,6 +23,7 @@
         <div class="btn_bar">
             <button type="button"><i class="fa-regular fa-clock-desk"></i></button>
             <button type="button"><i class="fa-solid fa-trash-can"></i></button>
+            <a href="{{ url_for('config') }}"><button type="button" style="font-size: 12px;">CONFIG</button></a>
             {{ user.nome }}
         </div>
       </div>

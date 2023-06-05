@@ -98,7 +98,7 @@ def Update(index):
 
         return redirect(url_for('Home'))
     else:
-        return render_template('home/editar.html', card=my_card)
+        return render_template('home/editar.html', card=my_card, user=current_user.nome)
 
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required
@@ -109,7 +109,19 @@ def Delete(index):
 
     return redirect(url_for('Home'))
 
+# -- implementações
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    return render_template('test/new_index.html')
+    print(request.form)
+    return render_template('test/T1.html')
 
+@app.route('/config', methods=['GET', 'POST'])
+def config():
+    user = perfil.query.get(current_user.id)
+    if request.method == "POST":
+        user.nome = request.form.get('nome')
+
+        db.session.commit()
+        return redirect(url_for('Home'))
+
+    return render_template('test/config.html', form=formRegister(), user=current_user.nome)
