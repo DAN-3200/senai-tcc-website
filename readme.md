@@ -18,3 +18,4 @@ Fontes:
     
     https://www.youtube.com/playlist?list=PL3BqW_m3m6a05ALSBW02qDXmfDKIip2KX
     https://www.youtube.com/playlist?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH
+    https://www.youtube.com/watch?v=dCym9EICKGQ&t=590s&pp=ugMICgJwdBABGAHKBQ1mbGFzayBtaWdyYXRl
