@@ -98,7 +98,7 @@ def Update(index):
 
         return redirect(url_for('Home'))
     else:
-        return render_template('home/editar.html', card=my_card, user=current_user.nome)
+        return render_template('home/editar.html', card=my_card, user=current_user)
 
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required
