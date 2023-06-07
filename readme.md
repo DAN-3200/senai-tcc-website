@@ -7,6 +7,9 @@ importações:
 
     pip install flask flask_sqlalchemy flask_wtf mysql-connector-python flask_login flask_bcrypt flask_migrate
 
+ou dá um:
+    
+    pip install -r requeriments.txt
   
 Fontes: 
 
