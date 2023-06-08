@@ -26,15 +26,17 @@
                         </div>
                     </div>
                     <div class="boxButton">
-                        <a style="text-decoration: none" href="{{ url_for('register') }}"><div class="button-flask" > inscrever-se </div></a>
                         {{ form.submit(class="button-flask") }}
                     </div>
-                    <p style="position: relative; top: 30px; color:rgb(126, 126, 126); justify-self: center;">@Developer in Senai</p>
+                    <p style="color:rgb(126, 126, 126); justify-self: center;">
+                        Não tem conta?
+                        <a style="text-decoration: none" href="{{ url_for('register') }}"> inscrever-se </a>
+                    </p>
                 </div>
             </form>
         </div>
         <div class="banner">
-            <img src="{{ url_for('static', filename = 'img/Setup-bro.png') }}" alt="" style="width: 90%;">
+            <img src="{{ url_for('static', filename = 'img/Time management-rafiki.png') }}" alt="" style="width: 90%;">
         </div>
 
     </main>
