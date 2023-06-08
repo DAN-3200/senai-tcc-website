@@ -119,7 +119,7 @@ def test():
 def config():
     user = perfil.query.get(current_user.id)
     if request.method == "POST":
-        user.nome = request.form.get('nome')
+        user.senha = by.generate_password_hash(request.form.get('senha'))
 
         db.session.commit()
         return redirect(url_for('Home'))

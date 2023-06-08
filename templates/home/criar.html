@@ -2,24 +2,27 @@
 
 {% block content %}
     <main>
-    <form class="card" action="" method="POST" id="envio">
-        <div class="title-card">
-          <textarea placeholder="Título" maxlength="40" name="title" id="title"></textarea>
+        <div class="group-card">
+            {% include 'home/saved_card.html' %}
         </div>
-        <div class="content-card">
-          <textarea placeholder="Digite..." maxlength="1000" name="content" id="content"></textarea>
-        </div>
-        <div class="tools-card">
-            <button type="submit" class="create-action" form="envio" href="{{ url_for('Create') }}"> CREATE </button>
-            <select name="priority">
-            <option value="1">Grau I</option>
-            <option value="2">Grau II</option>
-            <option value="3">Grau III</option>
-            </select>
-        </div>
-    </form>
-    <div class="group-card">
-        {% include 'home/saved_card.html' %}
-    </div>
+        <form class="card" action="" method="POST" id="envio">
+            <div class="title-card">
+              <textarea placeholder="Título" maxlength="40" name="title" id="title"></textarea>
+                <div style="display:flex; align-items: center;margin: 5px; margin-right: 10px">
+                     {{ user.nome }}
+                </div>
+            </div>
+            <div class="content-card">
+              <textarea placeholder="Digite..." maxlength="1000" name="content" id="content"></textarea>
+            </div>
+            <div class="tools-card">
+                <button type="submit" class="create-action" form="envio" href="{{ url_for('Create') }}"> CREATE </button>
+                <select name="priority">
+                <option value="1">Grau I</option>
+                <option value="2">Grau II</option>
+                <option value="3">Grau III</option>
+                </select>
+            </div>
+        </form>
     </main>
 {% endblock %}
