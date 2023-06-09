@@ -3,7 +3,8 @@ from flask import (
     request, # Pegar informações enviadas pelos forms
     url_for, # Caminho url do arquivo
     redirect, # Redirecionar a uma função
-    jsonify # formatar em JSON
+    jsonify, # formatar em JSON
+    make_response
 )
 from flask_login import (
     login_user, # Introduz o usuário na sessão
@@ -89,24 +90,30 @@ def Create():
 @login_required
 def Update(index):
     my_card = card.query.get(index)
-    if request.method == 'POST':
-        # Request
-        my_card.title = request.form.get('title')
-        my_card.content = request.form.get('content')
-        my_card.priority = request.form.get('priority')
 
-        db.session.commit()
+    if current_user.id == my_card.fk_user:
+        if request.method == 'POST':
+            # Request
+            my_card.title = request.form.get('title')
+            my_card.content = request.form.get('content')
+            my_card.priority = request.form.get('priority')
 
-        return redirect(url_for('Home'))
+            db.session.commit()
+
+            return redirect(url_for('Home'))
+        else:
+            return render_template('home/editar.html', card=my_card, user=current_user)
     else:
-        return render_template('home/editar.html', card=my_card, user=current_user)
+        return redirect(url_for('Home'))
+
 
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required
 def Delete(index):
     my_card = card.query.get(index)
-    db.session.delete(my_card)
-    db.session.commit()
+    if current_user.id == my_card.fk_user:
+        db.session.delete(my_card)
+        db.session.commit()
 
     return redirect(url_for('Home'))
 
@@ -129,7 +136,18 @@ def config():
 # -- Testando AJAX
 @app.route('/ajax', methods=['GET', 'POST'])
 def ajax():
-    req = request.get_json()
-    print(req)
-    print(request)
-    return jsonify(request.form)
+    print('--- JS/URL/ON ---')
+    
+    # -- pega requisição JSON
+    Data = request.get_json() 
+    print(Data)
+    # -- Parte lógica -- faça oq quiser com a informação
+    user = perfil.query.filter_by(nome=Data)
+
+
+
+    print(user)
+    # -- formate a nova informação em JSON e retorne
+    newData = make_response(jsonify(user), 200)
+
+    return newData

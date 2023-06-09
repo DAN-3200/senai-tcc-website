@@ -25,7 +25,7 @@ class card(db.Model):
     id_card = db.Column(db.Integer, primary_key=True, nullable=False)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.String(2000))
-    date = db.Column(db.Date, nullable=False, default=datetime.datetime.now().date())
+    date = db.Column(db.Date, default=datetime.datetime.now().date)
     priority = db.Column(db.String(255))
     delete = db.Column(db.Boolean)
     fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
