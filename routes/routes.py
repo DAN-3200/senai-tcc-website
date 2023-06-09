@@ -136,18 +136,19 @@ def config():
 # -- Testando AJAX
 @app.route('/ajax', methods=['GET', 'POST'])
 def ajax():
-    print('--- JS/URL/ON ---')
-    
-    # -- pega requisição JSON
-    Data = request.get_json() 
-    print(Data)
-    # -- Parte lógica -- faça oq quiser com a informação
-    user = perfil.query.filter_by(nome=Data)
+    try:
+        print('--- JS/URL/ON ---')
 
+        # -- pega requisição JSON
+        Data = request.get_json()
+        print(Data)
+        # -- Parte lógica -- faça oq quiser com a informação
+        ent = perfil.query.get(Data.get('Titulo'))
 
+        print(ent.email)
+        # -- formate a nova informação em JSON e retorne
+        newData = make_response(jsonify({ 'Email' : ent.email }), 200)
 
-    print(user)
-    # -- formate a nova informação em JSON e retorne
-    newData = make_response(jsonify(user), 200)
-
-    return newData
+        return newData
+    except:
+        return make_response(jsonify({ 'Email' : 'None'}), 200)

@@ -11,7 +11,7 @@ function Env(){
         Conteudo: content.value
     };
 
-    console.log(molde);
+    // console.log(molde);
 
     // "AJAX"
     fetch('/ajax', {
