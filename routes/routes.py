@@ -2,7 +2,8 @@ from flask import (
     render_template, # Renderizar Página
     request, # Pegar informações enviadas pelos forms
     url_for, # Caminho url do arquivo
-    redirect # Redirecionar a uma função
+    redirect, # Redirecionar a uma função
+    jsonify # formatar em JSON
 )
 from flask_login import (
     login_user, # Introduz o usuário na sessão
@@ -112,8 +113,7 @@ def Delete(index):
 # -- implementações
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    print(request.form)
-    return render_template('test/T1.html')
+    return render_template('test/engine.html')
 
 @app.route('/config', methods=['GET', 'POST'])
 def config():
@@ -125,3 +125,11 @@ def config():
         return redirect(url_for('Home'))
 
     return render_template('test/config.html', form=formRegister(), user=current_user.nome)
+
+# -- Testando AJAX
+@app.route('/ajax', methods=['GET', 'POST'])
+def ajax():
+    req = request.get_json()
+    print(req)
+    print(request)
+    return jsonify(request.form)
