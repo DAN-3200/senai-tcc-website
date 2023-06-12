@@ -1,4 +1,5 @@
 // test de AJAX
+let box;
 
 function Env(){
     // pega os campos
@@ -13,7 +14,8 @@ function Env(){
 
     // console.log(molde);
 
-    // "AJAX"
+
+    // "AJAX" --> fetch('url',{...}).then(function(response){});
     fetch('/ajax', {
         method: "POST",
         credentials: "include",
@@ -24,16 +26,16 @@ function Env(){
         })
     }).then(function(response) {
         if (response.status != 200){
-            console.log('unstable status!')
+            console.log('unstable status!');
             return;
         }
         response.json().then(function(newData){
             // pega informação
-            console.log(newData)
+            console.log(newData);
+            alert(newData['Email']);
+            box = newData;
         })
     });
-
-}
-
+};
 
 

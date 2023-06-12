@@ -6,16 +6,10 @@
 </head>
 <body style="background-color: #28282b">
     <div style="background-color: white; padding: 15px; margin: 0 auto; text-align: center; width: 500px">
-        <input name="title" type="text" id="title">
-        <input name="content" type="text" id="content">
-        <button onclick="Env()">JSON</button>
-
-        <div>
-
-        </div>
+        <p>{{ user.nome }}</p>
+        <p>{{ user.email }}</p>
+        <img src="{{file}}" width="100px">
     </div>
 
-    
-    <script src="{{ url_for('static', filename='/js/eng.js') }}"></script>
 </body>
 </html>
