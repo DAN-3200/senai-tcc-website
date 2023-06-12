@@ -1,0 +1,152 @@
+/* ALL ------------------------------------------------------------------------------------------ */
+*{
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #28282b;
+}
+
+/* Card do time --------------------------------------- */
+
+.box{
+    width: 350px;
+    min-height: 200px;
+    padding: 10px;
+
+    display: grid;
+    grid-template-rows: 70% auto;
+
+    background-color: rgb(223, 236, 231);
+    border-radius: 7.5px;
+}
+
+
+.field{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    resize: none;
+    background-color: transparent;
+    border: 2px solid rgb(158, 158, 158);
+    transition: 0.3s;
+
+    font-size: 30px;
+    padding: 5px;
+}
+
+.field:hover, .mini-card input:hover{
+    transition: 0.2s;
+    border: 2px solid rgb(129, 129, 129);
+}
+
+.field:focus-visible, .mini-card input:focus-visible{
+    transition: 0.2s;
+    border: 2px solid rgb(39, 39, 39);
+}
+
+/* Tools --------------------------------------- */
+
+.time-tools{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* background-color: white; */
+    font-weight: bolder;
+}
+
+.button-tools{
+    width: 80%;
+    padding: 5px 20px;
+
+    background-color: rgb(255, 87, 75);
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    cursor: pointer;
+    transition: 0.1s;
+    color: white;
+}
+
+.button-tools:active{
+    background-color: rgb(219, 73, 63);
+    box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+@keyframes blink{
+    from{
+
+    }to{
+        opacity: 60%;
+    }
+}
+
+@keyframes reveal{
+    from{
+        transform: translateX(-100%);
+    }to{
+        
+    }
+}
+/* mini-card --------------------------------------- */
+.mini-card{
+    background-color: rgb(223, 236, 231);
+    height: 60px;
+    min-width: 350px;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    padding-left: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+
+    font-weight: bolder;
+    animation: reveal 0.3s;
+}
+
+.mini-card input{
+    background-color: transparent;
+    border:  2px solid transparent;
+    width: 80%;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.mini-card button{
+    background-color: transparent;
+    border: silver 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mini-card button:hover{
+    background-color: transparent;
+    border: rgb(146, 146, 146) 1px solid;
+    
+}
+
+.mini-card button:active{
+    background-color: silver;
+}
+
+.group{
+    height: 300px;
+    overflow: auto;
+}
+
+
+.group::-webkit-scrollbar {width: 0! important}
