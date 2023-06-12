@@ -1,7 +1,11 @@
 # Models do Database
 import datetime
-from main import db
+from main import db, lm
 from flask_login import UserMixin
+
+@lm.user_loader # ainda não sei pra que serve isso, mas é necessário pra o Login-Manager
+def user_loader(id):
+    return perfil.query.get(id)
 
 class perfil(db.Model, UserMixin):
     __tablename__ = 'perfil'

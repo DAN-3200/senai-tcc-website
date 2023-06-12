@@ -30,7 +30,7 @@ def toDo():
 @app.route('/ajax/create', methods=['GET', 'POST'])
 def create_AJAX():
     try:
-        print('--- /ajax/create/on ---')
+        print('--- /ajax/create ---')
 
         # -- pega requisição JSON
         Data = request.get_json()
@@ -48,16 +48,42 @@ def create_AJAX():
         db.session.commit()
 
         # -- formate a nova informação em JSON e retorne
-        newData = make_response(jsonify({'status': True}), 200)
+        newData = make_response(jsonify({'status': True }), 200)
 
         return newData
     except:
-        return make_response(jsonify({ 'status' : False}), 200)
+        return make_response(jsonify({ 'status' : False }), 200)
 
 @app.route('/ajax/update', methods=['GET', 'POST'])
 def update_AJAX():
-    pass
+    try:
+        print('--- /ajax/update ---')
+
+        # -- pega requisição JSON
+        Data = request.get_json()
+        print(f"  {Data}")
+
+        # -- lógica --
+        my_card = card.query.get()
+        my_card.title = Data.get('title')
+        db.session.commit()
+
+    except:
+        return make_response(jsonify({ 'status' : False }), 200)
 
 @app.route('/ajax/delete', methods=['GET', 'POST'])
 def delete_AJAX():
-   pass
+    try:
+        print('--- /ajax/delete ---')
+
+        # -- pega requisição JSON
+        Data = request.get_json()
+        print(f"  {Data}")
+
+        # -- lógica --
+        my_card = card.query.get()
+        db.session.delete(my_card)
+        db.session.commit()
+
+    except:
+        return make_response(jsonify({ 'status' : False }), 200)

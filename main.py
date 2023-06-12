@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 
 # -- Vincular ao banco
-usuario_db = "root" ; senha_db = "root" ; banco_db = "bank"
+usuario_db = "root" ; senha_db = "1234" ; banco_db = "bank"
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{usuario_db}:{senha_db}@localhost:3306/{banco_db}'
 app.app_context().push()
 
@@ -35,8 +35,9 @@ by = Bcrypt(app)
 
 # -- Import Routes --
 from routes import  (
-    routes,
-    newNotes,
-    zona,
+    flask_crud,
+    ajax_crud,
+    system_user,
+    testes,
 )
 

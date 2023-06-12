@@ -22,46 +22,6 @@ from main import (
 from models.model import card, perfil
 from forms.Forms import formRegister, formLogin
 
-@lm.user_loader # ainda não sei pra que serve isso, mas é necessário pra o Login-Manager
-def user_loader(id):
-    return perfil.query.get(id)
-
-# -- Login/Register
-@app.route('/', methods=['POST','GET']) # Raiz do endereço http
-def login():
-    # Agora Loga tanto com Username quanto com Email
-    if request.method == "POST":
-        nome = request.form.get('nome')
-        senha = request.form.get('senha')
-        remember = True if request.form.get('remember') else False
-
-        user = perfil.query.filter_by(nome=nome).first() or perfil.query.filter_by(email=nome).first()
-        if user and by.check_password_hash(user.senha, senha):
-            login_user(user, remember=remember)
-            return redirect(url_for('Home'))
-
-    return render_template('login/login.html', form=formLogin())
-
-@app.route('/logout', methods=['GET', 'POST'])
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
-
-@app.route('/register', methods=['POST','GET'])
-def register():
-    if request.method == 'POST':
-        if request.form.get('senha') == request.form.get('c_senha'):
-            db.session.add(perfil(
-                nome=request.form.get('nome'),
-                senha=by.generate_password_hash(request.form.get('senha')), # senha scriptada
-                email=request.form.get('email')
-            ))
-            db.session.commit()
-            return redirect(url_for('login'))
-
-    return render_template('register/register.html', form=formRegister())
-
 # -- CRUD de notas
 @app.route('/home', methods=['GET'])
 @login_required

@@ -1,6 +1,6 @@
 // Fazer um CRUD de Item
 
-function Create() {
+async function Create() {
     const textField = document.getElementById('field')
 
     if(textField.value.length <= 0){
@@ -11,8 +11,9 @@ function Create() {
             'word' : textField.value
         };
 
-        const back = ajax(molde,'/ajax/create');
-        console.log(back);
+        const back = await ajax(molde,'/ajax/create');
+        console.log(back.status);
+
         Read(molde);
 
         textField.value = '';
@@ -25,7 +26,7 @@ function Read(DICT){
     item.id = '1'
 
     item.innerHTML = `
-        <input type="text" value="${DICT.result}">
+        <input type="text" value="${DICT.word}">
         <div>
             <button onclick="Update(1)">U</button>
             <button onclick="Delete(1)">D</button>
@@ -51,24 +52,29 @@ function Update(i){
 
 function ajax(dict, url){
     // "AJAX" --> fetch('url',{...}).then(function(response){});
-    fetch( url, {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify(dict),
-        cache: "no-cache",
-        headers: new Headers({
-            "content-type": "application/json"
+    return new Promise((resolve, reject) =>
+        fetch( url, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(dict),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        }).then(function(response) {
+            if (response.status != 200){
+                console.log('unstable status!');
+                return;
+            }
+            return response.json();
+        }).then(function(newData) {
+            // Manipula os dados recebidos
+            resolve(newData);
         })
-    }).then(function(response) {
-        if (response.status != 200){
-            console.log('unstable status!');
-            return;
-        }
-        response.json().then(function(newData){
-            // pega informação
-            console.log(newData)
-            return newData
+        .catch(function(error) {
+            // Lida com erros da requisição
+            reject(error);
         })
-    });
+    )
 
-};
+}
