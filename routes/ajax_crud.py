@@ -34,7 +34,7 @@ def create_AJAX():
 
         # -- pega requisição JSON
         Data = request.get_json()
-        print(f"  {Data}")
+        print(f"   {Data}")
 
         # -- Parte lógica -- faça oq quiser com a informação
 
@@ -47,12 +47,15 @@ def create_AJAX():
         db.session.add(card(title=title, content=content, priority=priority, user=user))
         db.session.commit()
 
+        ser = card.query.filter_by(title=title)
         # -- formate a nova informação em JSON e retorne
-        newData = make_response(jsonify({'status': True }), 200)
+        return make_response(jsonify({
+            'id': f'{ser.title}',
+            'create': True,
+        }), 200)
 
-        return newData
     except:
-        return make_response(jsonify({ 'status' : False }), 200)
+        return make_response(jsonify({ 'create' : False }), 200)
 
 @app.route('/ajax/update', methods=['GET', 'POST'])
 def update_AJAX():
@@ -68,8 +71,9 @@ def update_AJAX():
         my_card.title = Data.get('title')
         db.session.commit()
 
+        return make_response(jsonify({'update': True}), 200)
     except:
-        return make_response(jsonify({ 'status' : False }), 200)
+        return make_response(jsonify({ 'update' : False }), 200)
 
 @app.route('/ajax/delete', methods=['GET', 'POST'])
 def delete_AJAX():
@@ -85,5 +89,6 @@ def delete_AJAX():
         db.session.delete(my_card)
         db.session.commit()
 
+        return make_response(jsonify({'delete': True}), 200)
     except:
-        return make_response(jsonify({ 'status' : False }), 200)
+        return make_response(jsonify({ 'delete' : False }), 200)

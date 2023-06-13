@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="box">
         <input type="text" class="field" id="field">
         <div class="time-tools">
@@ -25,8 +24,8 @@
         <div class="mini-card">
               <input type="text" value="{{ card.title }}">
             <div>
-                <button onclick="Update(${count-1})">U</button>
-                <button onclick="Delete(${count-1})">D</button>
+                <button onclick="Update()">U</button>
+                <button onclick="Delete()">D</button>
             </div>
         </div>
         {% endfor %}

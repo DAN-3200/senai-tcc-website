@@ -11,8 +11,8 @@ async function Create() {
             'word' : textField.value
         };
 
-        const back = await ajax(molde,'/ajax/create');
-        console.log(back.status);
+        const validate = await ajax(molde,'/ajax/create');
+        console.log(validate);
 
         Read(molde);
 
@@ -23,7 +23,7 @@ async function Create() {
 function Read(DICT){
     const item = document.createElement('div')
     item.className = 'mini-card'
-    item.id = '1'
+    item.id = '36'
 
     item.innerHTML = `
         <input type="text" value="${DICT.word}">
@@ -35,19 +35,16 @@ function Read(DICT){
     document.getElementById('group').appendChild(item)
 }
 
-function Delete(i){
-    delete BOX[i];
-    const element = document.getElementById(`#${i}`);
+function Delete(id){
+    ajax({'id': 36}, '/ajax/delete')
+    const element = document.getElementById(``);
     
     element.remove();
-    console.log(BOX);
 }
 
-function Update(i){
-    const card = document.getElementById(`#${i}`);
-
-    BOX[i] = card.querySelector('input').value;
-    console.log(BOX)
+function Update(id){
+    const validate = ajax({'id': 36}, '/ajax/delete')
+    const card = document.getElementById(``);
 }
 
 function ajax(dict, url){
