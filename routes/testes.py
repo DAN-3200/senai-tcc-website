@@ -41,7 +41,7 @@ def config():
 # -- Testando AJAX
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    return render_template('test/engine.html')
+    return render_template('new/dashboard.html')
 
 @app.route('/ajax', methods=['GET', 'POST'])
 def ajax():

@@ -312,6 +312,13 @@ main{
     font-size: 20px;
     color: #28282b;
     animation: reveal-box 0.25s;
+    transition: 0.3s;
+}
+
+.saved-card:hover{
+    transition: 0.5s;
+    /* transform: scale(1.1); */
+    transform: translateY(-5px);
 }
 
 a{
