@@ -1,6 +1,6 @@
 // Fazer um CRUD de Item
 
-async function Create() {
+function Create() {
     const textField = document.getElementById('field')
 
     if(textField.value.length <= 0){
@@ -11,10 +11,25 @@ async function Create() {
             'word' : textField.value
         };
 
-        const validate = await ajax(molde,'/ajax/create');
-        console.log(validate);
+        fetch('/ajax/create', {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(molde),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        }).then(function(response) {
+            if (response.status != 200){
+                console.log('unstable status!');
+                return;
+            }
+            response.json().then(function(newData){
+                console.log( newData.create)
+                Read(molde)
+            })
+        });
 
-        Read(molde);
 
         textField.value = '';
     }
@@ -26,6 +41,7 @@ function Read(DICT){
     item.id = '36'
 
     item.innerHTML = `
+        <input type="checkbox">
         <input type="text" value="${DICT.word}">
         <div>
             <button onclick="Update(1)">U</button>

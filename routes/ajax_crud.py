@@ -19,13 +19,13 @@ from main import (
     lm, # Login Manage
     by, # Flask-Bcrypt
 )
-from models.model import card, perfil
+from models.model import todo, perfil
 from forms.Forms import formRegister, formLogin
 
 @app.route('/toDo', methods=['GET', 'POST'])
 def toDo():
-    cards = card.query.filter_by(fk_user=current_user.id)
-    return render_template('test/H.html', box=cards)
+    cards = todo.query.filter_by(fk_user=current_user.id)
+    return render_template('tools/toDo.html', box=cards)
 
 @app.route('/ajax/create', methods=['GET', 'POST'])
 def create_AJAX():
@@ -38,19 +38,17 @@ def create_AJAX():
 
         # -- Parte lógica -- faça oq quiser com a informação
 
-        title = Data.get('word')
-        content = ''
-        priority = ''
+        content = Data.get('word')
         user = current_user.id
 
         # Envio ao banco
-        db.session.add(card(title=title, content=content, priority=priority, user=user))
+        db.session.add(todo(content=content, user=user))
         db.session.commit()
 
-        ser = card.query.filter_by(title=title)
+        ser = todo.query.filter_by(title=content)
         # -- formate a nova informação em JSON e retorne
         return make_response(jsonify({
-            'id': f'{ser.title}',
+            'id': f'{ser.id}',
             'create': True,
         }), 200)
 
@@ -67,7 +65,7 @@ def update_AJAX():
         print(f"  {Data}")
 
         # -- lógica --
-        my_card = card.query.get()
+        my_card = todo.query.get()
         my_card.title = Data.get('title')
         db.session.commit()
 
@@ -85,7 +83,7 @@ def delete_AJAX():
         print(f"  {Data}")
 
         # -- lógica --
-        my_card = card.query.get()
+        my_card = todo.query.get()
         db.session.delete(my_card)
         db.session.commit()
 

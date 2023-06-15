@@ -23,23 +23,35 @@ class perfil(db.Model, UserMixin):
     def __repr__(self):
         return '<User %r>' % self.nome
 
-class card(db.Model):
-    __tablename__ = 'cards'
+class notes(db.Model):
+    __tablename__ = 'notes'
 
-    id_card = db.Column(db.Integer, primary_key=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    content = db.Column(db.String(2000))
-    date = db.Column(db.Date, default=datetime.datetime.now().date)
-    priority = db.Column(db.String(255))
+    content = db.Column(db.String(4000))
     delete = db.Column(db.Boolean)
+    date = db.Column(db.Date, default=datetime.datetime.now().date)
+
     fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
 
-    def __init__(self, title, content, priority, user):
+    def __init__(self, title, content, user):
         self.title = title
         self.content = content
-        self.priority = priority
         self.fk_user = user
-        self.delete = False
 
     def __repr__(self):
-        return f'<Card #{self.id_card}>'
+        return f'<Card #{self.id}>'
+
+class todo(db.Model):
+
+    __tablename__ = 'todo'
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    content = db.Column(db.String(255), nullable=False)
+    check = db.Column(db.Boolean)
+
+    fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
+
+    def __init__(self, content, user):
+        self.content = content
+        self.fk_user = user

@@ -20,9 +20,10 @@
         </div>
     </div>
     <div class="group" id="group">
-        {% for card in box %}
+        {% for i in box %}
         <div class="mini-card">
-              <input type="text" value="{{ card.title }}">
+            <input type="checkbox">
+              <input type="text" value="{{ i.content }}">
             <div>
                 <button onclick="Update()">U</button>
                 <button onclick="Delete()">D</button>

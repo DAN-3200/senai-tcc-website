@@ -2,7 +2,7 @@
 
 {% block content %}
     <main style="grid-template-columns: auto">
-    <form class="card" action="{{ url_for('Update', index=card.id_card) }}" method="POST" id="envio">
+    <form class="card" action="{{ url_for('Update', index=card.id) }}" method="POST" id="envio">
         <div class="title-card">
           <textarea placeholder="Título" maxlength="40" name="title" id="title">{{ card.title }}</textarea>
         </div>
@@ -17,7 +17,7 @@
             <option value="2">Grau II</option>
             <option value="3">Grau III</option>
             </select>
-            <a class="excluir" style="font-size: 14px " type="button" href="{{ url_for('Delete', index=card.id_card) }}"><i class="fa-solid fa-trash-can"></i></a>
+            <a class="excluir" style="font-size: 14px " type="button" href="{{ url_for('Delete', index=card.id) }}"><i class="fa-solid fa-trash-can"></i></a>
         </div>
     </form>
     </main>

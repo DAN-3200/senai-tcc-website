@@ -19,14 +19,14 @@ from main import (
     lm, # Login Manage
     by, # Flask-Bcrypt
 )
-from models.model import card, perfil
+from models.model import perfil
 from forms.Forms import formRegister, formLogin
 
 # -- implementações
 @app.route('/profile', methods=['GET'])
 def profile():
     file = url_for('static', filename='img/Setup-bro.png')
-    return render_template('test/profile.html', user=current_user, file=file)
+    return render_template('tools/profile.html', user=current_user, file=file)
 
 @app.route('/config', methods=['GET', 'POST'])
 def config():
@@ -36,28 +36,4 @@ def config():
         db.session.commit()
         return redirect(url_for('Home'))
 
-    return render_template('test/config.html', form=formRegister(), user=current_user.nome)
-
-# -- Testando AJAX
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-    return render_template('test/engine.html')
-
-@app.route('/ajax', methods=['GET', 'POST'])
-def ajax():
-    try:
-        print('--- JS/URL/ON ---')
-
-        # -- pega requisição JSON
-        Data = request.get_json()
-        print(f"  {Data}")
-        # -- Parte lógica -- faça oq quiser com a informação
-        ent = perfil.query.get(Data.get('Titulo'))
-
-        print(f"  {ent.email}")
-        # -- formate a nova informação em JSON e retorne
-        newData = make_response(jsonify({ 'Email' : ent.email }), 200)
-
-        return newData
-    except:
-        return make_response(jsonify({ 'Email' : 'None'}), 200)
+    return render_template('tools/config.html', form=formRegister(), user=current_user.nome)

@@ -1,7 +1,5 @@
-// test de AJAX
-let box;
-
-function Env(){
+// Testando Fetch()
+function web_back(){
     // pega os campos
     let title = document.getElementById('title');
     let content = document.getElementById('content');
@@ -11,9 +9,6 @@ function Env(){
         Titulo: title.value,
         Conteudo: content.value
     };
-
-    // console.log(molde);
-
 
     // "AJAX" --> fetch('url',{...}).then(function(response){});
     fetch('/ajax', {

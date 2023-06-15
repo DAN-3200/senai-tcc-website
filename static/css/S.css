@@ -108,9 +108,9 @@ body{
     padding: 5px;
     padding-left: 20px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
     align-items: center;
-    justify-content: space-between;
     gap: 5px;
 
     font-weight: bolder;
@@ -120,7 +120,7 @@ body{
 .mini-card input{
     background-color: transparent;
     border:  2px solid transparent;
-    width: 80%;
+    width: 100%;
     padding: 5px;
     border-radius: 5px;
     outline: none;
@@ -141,6 +141,11 @@ body{
 
 .mini-card button:active{
     background-color: silver;
+}
+
+.mini-card input[type='checkbox']{
+    width:20px;
+    height:20px;
 }
 
 .group{
