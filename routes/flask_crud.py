@@ -19,15 +19,14 @@ from main import (
     lm, # Login Manage
     by, # Flask-Bcrypt
 )
-from models.model import notes, perfil
-from forms.Forms import formRegister, formLogin
+from models.model import notes, todo
 
 # -- CRUD de notas
 @app.route('/home', methods=['GET'])
 @login_required
 def Home():
     print(f"{current_user.id}|{current_user}")
-    cards = notes.query.filter_by(fk_user=current_user.id)
+    cards = todo.query.filter_by(fk_user=current_user.id)
     return render_template('home/create.html', box=cards, user=current_user)
 
 @app.route('/home', methods=['POST'])
@@ -40,7 +39,7 @@ def Create():
         user = current_user.id
 
         # Envio ao banco
-        db.session.add(notes(title=title, content=content, user=user))
+        db.session.add(todo(content=content, user=user))
         db.session.commit()
 
     return redirect(url_for('Home'))
@@ -48,14 +47,13 @@ def Create():
 @app.route('/home/update/<index>', methods=['GET', 'POST'])
 @login_required
 def Update(index):
-    my_card = notes.query.get(index)
+    my_card = todo.query.get(index)
 
     if current_user.id == my_card.fk_user:
         if request.method == 'POST':
             # Request
             my_card.title = request.form.get('title')
             my_card.content = request.form.get('content')
-            my_card.priority = request.form.get('priority')
 
             db.session.commit()
 
@@ -68,7 +66,7 @@ def Update(index):
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required
 def Delete(index):
-    my_card = notes.query.get(index)
+    my_card = todo.query.get(index)
     if current_user.id == my_card.fk_user:
         db.session.delete(my_card)
         db.session.commit()

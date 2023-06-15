@@ -18,7 +18,6 @@ main{
 
     background-color: white;
     border-left: #28282b 2px solid;
-
 }
 
 .title-card{
@@ -39,7 +38,6 @@ main{
     width: 100%;
     font-size: 18px;
     overflow: hidden;
-    font-weight: 1000;
     color: #28282b;
  
     background: transparent;
@@ -187,7 +185,7 @@ main{
     align-items: center;
     padding-top: 15px;
     gap: 11.5px;
-    height: 92vh;
+    height: 91vh;
     overflow: auto;
 }
 

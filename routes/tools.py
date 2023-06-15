@@ -16,7 +16,6 @@ from flask_login import (
 from main import (
     app, # Aplicação
     db, # Database
-    lm, # Login Manage
     by, # Flask-Bcrypt
 )
 from models.model import perfil

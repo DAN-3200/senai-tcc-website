@@ -108,22 +108,28 @@ body{
     padding: 5px;
     padding-left: 20px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
     align-items: center;
-    justify-content: space-between;
     gap: 5px;
 
     font-weight: bolder;
     animation: reveal 0.3s;
 }
 
-.mini-card input{
+.mini-card input[type='text']{
     background-color: transparent;
     border:  2px solid transparent;
-    width: 80%;
+    border-bottom: 2px solid silver;
+    width: 100%;
     padding: 5px;
     border-radius: 5px;
     outline: none;
+}
+
+.mini-card input[type='checkbox']{
+    width: 25px;
+    height: 25px;
 }
 
 .mini-card button{

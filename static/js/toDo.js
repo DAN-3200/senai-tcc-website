@@ -7,15 +7,10 @@ async function Create() {
         alert('Não tem nada')
         return;
     }else{
-        let molde = {
-            'word' : textField.value
-        };
-
         const validate = await ajax(molde,'/ajax/create');
-        console.log(validate);
+        //console.log(validate);
 
-        Read(molde);
-
+        Read(validate);
         textField.value = '';
     }
 }
@@ -23,28 +18,30 @@ async function Create() {
 function Read(DICT){
     const item = document.createElement('div')
     item.className = 'mini-card'
-    item.id = '36'
+    item.id = `#${DICT.id}`
 
     item.innerHTML = `
-        <input type="text" value="${DICT.word}">
+        <input name="check" type="checkbox">
+        <input class="texto" type="text" value="${DICT.content}">
         <div>
-            <button onclick="Update(1)">U</button>
-            <button onclick="Delete(1)">D</button>
+            <button onclick="Update(${DICT.id})">U</button>
+            <button onclick="Delete(${DICT.id})">D</button>
         </div>
     `
     document.getElementById('group').appendChild(item)
 }
 
 function Delete(id){
-    ajax({'id': 36}, '/ajax/delete')
-    const element = document.getElementById(``);
+    ajax({'id': id}, '/ajax/delete')
+    const element = document.getElementById(`#${id}`);
     
     element.remove();
 }
 
 function Update(id){
-    const validate = ajax({'id': 36}, '/ajax/delete')
-    const card = document.getElementById(``);
+    const ent = document.getElementById(`#${id}`).childNodes
+    //console.log(ent[3])
+    ajax({'id': id , 'content': ent[3].value }, '/ajax/update')
 }
 
 function ajax(dict, url){
@@ -73,5 +70,4 @@ function ajax(dict, url){
             reject(error);
         })
     )
-
 }

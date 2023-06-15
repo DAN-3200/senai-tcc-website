@@ -7,20 +7,15 @@ from flask import (
     make_response
 )
 from flask_login import (
-    login_user, # Introduz o usuário na sessão
-    logout_user, # Retira o usuário da sessão
     current_user, # pega o usuário da sessão
-    login_required, # Restringir o Usuário de acessar certas views
 )
 # coisa minha :)
 from main import (
     app, # Aplicação
     db, # Database
-    lm, # Login Manage
-    by, # Flask-Bcrypt
 )
-from models.model import todo, perfil
-from forms.Forms import formRegister, formLogin
+from models.model import todo
+
 
 @app.route('/toDo', methods=['GET', 'POST'])
 def toDo():
@@ -37,20 +32,19 @@ def create_AJAX():
         print(f"   {Data}")
 
         # -- Parte lógica -- faça oq quiser com a informação
-
-        title = Data.get('word')
-        content = ''
-        priority = ''
+        content = Data.get('word')
         user = current_user.id
 
+        card = todo(content=content, user=user)
+        
         # Envio ao banco
-        db.session.add(todo(content=content, user=user))
+        db.session.add(card)
         db.session.commit()
 
-        ser = todo.query.filter_by(title=title)
         # -- formate a nova informação em JSON e retorne
         return make_response(jsonify({
-            'id': f'{ser.title}',
+            'id': card.id,
+            'content' : card.content,
             'create': True,
         }), 200)
 
@@ -67,8 +61,8 @@ def update_AJAX():
         print(f"  {Data}")
 
         # -- lógica --
-        my_card = todo.query.get()
-        my_card.title = Data.get('title')
+        my_card = todo.query.get(Data.get('id'))
+        my_card.content = Data.get('content')
         db.session.commit()
 
         return make_response(jsonify({'update': True}), 200)
@@ -85,7 +79,7 @@ def delete_AJAX():
         print(f"  {Data}")
 
         # -- lógica --
-        my_card = todo.query.get()
+        my_card = todo.query.get(Data.get('id'))
         db.session.delete(my_card)
         db.session.commit()
 
