@@ -158,6 +158,27 @@ main{
     background-color: #373742;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1.25px, rgba(9, 30, 66, 0.13) 0px 1px;
     height: 55px;
+    padding: 5px 10px;
+    padding-left: 15px;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.note-search input{
+    width: 90%;
+    height: 30px;
+    outline: none;
+
+    color: white;
+    font-size: 16px;
+    background: transparent;
+    border-bottom: white 2px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .group-card{
