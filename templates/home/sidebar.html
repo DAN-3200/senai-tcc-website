@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> SideBar </title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+        <link href="{{ url_for('static', filename='css/notes.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
+
+
+    </head>
+    <body>
+        <!-- Sidebar ------------------- -->
+        <nav class="close">
+            <div class="header">
+                <div class="logo-web">
+                    <div class="ZenDo">
+                        <span class="Zen">Zen</span><span class="Do">Do</span>
+                    </div>
+
+                    <button class="hidden-bar" id="hidden"><i class="fa-solid fa-bars"></i></button>
+                </div>
+                <hr>
+            </div>
+
+            <div class="menu-bar">
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-regular fa-house"></i>
+                        <span>HOMEPAGE</span>
+                    </button>
+                </a>
+
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>DASHBOARD</span>
+                        <i class="fa-solid fa-bolt-lightning premium-icon" style="color: rgb(255, 191, 73);"></i>
+                    </button>
+                </a>
+
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-regular fa-pen"></i>
+                        <span>NOTAS</span>
+                    </button>
+                </a>
+
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>POMODORO</span>
+                    </button>
+                </a>
+
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span>LEMBRETES</span>
+                    </button>
+                </a>
+
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-solid fa-bed"></i>
+                        <span>ANTI-STRESS</span>
+                    </button>
+                </a>
+
+                <a href="">
+                    <button class="menu-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>CALENDARIO</span>
+
+                    </button>
+                </a>
+            </div>
+
+            <div class="footer">
+                <hr>
+                <div class="profile">
+                    <div class="box-profile">
+                        <div class="image">
+                            <div class="img">
+                                <img src="https://pbs.twimg.com/media/FYnusLOWQAASvH4.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="text header-text">
+                            <span class="name">{{ user.nome }}</span>
+                            <span class="profession">Service premium</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="upgrade">
+                    <i class="fa-solid fa-bolt-lightning"></i><span>UPGRADE</span>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Main --------------------- -->
+
+        {% block content %}
+        {% endblock %}
+
+
+        <script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+
+    </body>
+</html>

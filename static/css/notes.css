@@ -1,0 +1,219 @@
+/* Main */
+main{
+    width: 100%;
+    height: 100%;
+}
+
+.note-v1{
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+/* Card Settings --------------------------> */
+
+.card{
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 55px auto 40px;
+
+    background-color: white;
+    border-left: #28282b 2px solid;
+
+}
+
+.title-card{
+    color: #28282b;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1.25px, rgba(9, 30, 66, 0.13) 0px 1px;
+
+    display: flex;
+    gap: 10px;
+
+    border-radius: 0px 7.5px 0px 0px;
+    padding: 10px 5px;
+}
+
+.title-card textarea{
+    padding: 5px;
+    resize: none;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    overflow: hidden;
+    font-weight: 1000;
+    color: #28282b;
+ 
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    outline: none;
+}
+
+.content-card{
+    padding: 5px;
+}
+.content-card textarea{
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    outline: none ;
+    transition: 0.1s;
+    background: transparent;
+    padding: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+.sav-card-show{
+    width: 100%;
+    padding: 2.5px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+.content-card textarea:hover, .title-card textarea:hover, .sav-card-show:hover{
+    transition: 0.3s;
+    border: 2px solid #525252;
+}
+
+.content-card textarea:focus-visible, .title-card textarea:focus-visible{
+    border: 2px solid #4c4c4d;
+}
+
+.tools-card{
+    padding: 5px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 0px 0px 7.5px 0px;
+}
+
+.tools-card button, .excluir{
+
+    border: none;
+    background: transparent; 
+    cursor: pointer; 
+    border: none;
+    background: transparent;
+
+    transition: 0.2s;
+}
+
+.excluir{
+    min-width: 15px;
+    padding: 2.5px;
+}
+
+.excluir:hover{
+    color: rgb(255, 129, 129);
+    transition: 0.25s;
+}
+
+.tools-card select{
+    background: transparent;
+    border: none;
+    outline: none;
+    transition: 0.2s;
+    max-width: 75px;
+    width: 100%;
+    padding: 5px 2.5px;
+    border-radius: 2.5px;
+    cursor: pointer;
+}
+
+.tools-card .save-action, .create-action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
+    background: transparent;
+    min-width: 60px;
+    height: 25px;
+    color: #28282b;
+    padding: 0px 5px;
+    border-radius: 5px;
+    border: 2.5px solid transparent;
+    transition: 0.2s;
+}
+
+.tools-card .save-action:hover, .create-action:hover{
+    transition: 0.3s;
+    color: rgb(86, 166, 0);
+    border: 1px solid rgb(86, 166, 0);
+}
+
+/* Note-field */
+.note-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.note-search{
+    background-color: #373742;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1.25px, rgba(9, 30, 66, 0.13) 0px 1px;
+    height: 55px;
+}
+
+.group-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    gap: 11.5px;
+    height: 92vh;
+    overflow: auto;
+}
+
+.saved-card{
+    width: 90%;
+    min-height: 70px;
+    max-height: 70px;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+
+    /* Visual */
+    background-color: white;
+    border-radius: 2.5px;
+    border-left: 15px solid rgb(140, 219, 153);
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1.25px;
+
+    font-size: 20px;
+    color: #28282b;
+    animation: reveal-box 0.25s;
+    transition: 0.3s;
+}
+
+.saved-card:hover{
+    transition: 0.5s;
+    /* transform: scale(1.1); */
+    transform: translateY(-5px);
+}
+
+a{
+    text-decoration: none;
+    color: #28282b;
+}
+
+.sav-card-show span{
+    padding: 5px;
+}
+
+@keyframes reveal-box{
+    from {transform: translateX(-100%);} 
+    to {transform: translateX(0);}
+}
+
+@keyframes reveal-item{
+    from {width: 30%;}
+    to {width: 100%;}
+}

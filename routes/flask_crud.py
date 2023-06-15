@@ -19,7 +19,7 @@ from main import (
     lm, # Login Manage
     by, # Flask-Bcrypt
 )
-from models.model import card, perfil
+from models.model import notes, perfil
 from forms.Forms import formRegister, formLogin
 
 # -- CRUD de notas
@@ -27,8 +27,8 @@ from forms.Forms import formRegister, formLogin
 @login_required
 def Home():
     print(f"{current_user.id}|{current_user}")
-    cards = card.query.filter_by(fk_user=current_user.id)
-    return render_template('home/criar.html', box=cards, user=current_user)
+    cards = notes.query.filter_by(fk_user=current_user.id)
+    return render_template('home/create.html', box=cards, user=current_user)
 
 @app.route('/home', methods=['POST'])
 @login_required
@@ -37,11 +37,10 @@ def Create():
         # Request
         title = request.form['title']
         content = request.form['content']
-        priority = request.form['priority']
         user = current_user.id
 
         # Envio ao banco
-        db.session.add(card(title=title, content=content, priority=priority, user=user))
+        db.session.add(notes(title=title, content=content, user=user))
         db.session.commit()
 
     return redirect(url_for('Home'))
@@ -49,7 +48,7 @@ def Create():
 @app.route('/home/update/<index>', methods=['GET', 'POST'])
 @login_required
 def Update(index):
-    my_card = card.query.get(index)
+    my_card = notes.query.get(index)
 
     if current_user.id == my_card.fk_user:
         if request.method == 'POST':
@@ -62,14 +61,14 @@ def Update(index):
 
             return redirect(url_for('Home'))
         else:
-            return render_template('home/editar.html', card=my_card, user=current_user)
+            return render_template('home/edit.html', card=my_card, user=current_user)
     else:
         return redirect(url_for('Home'))
 
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required
 def Delete(index):
-    my_card = card.query.get(index)
+    my_card = notes.query.get(index)
     if current_user.id == my_card.fk_user:
         db.session.delete(my_card)
         db.session.commit()

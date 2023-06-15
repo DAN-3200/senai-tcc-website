@@ -1,16 +1,19 @@
-{% extends "home/home.html" %}
+{% extends "home/sidebar.html" %}
 
 {% block content %}
-    <main>
-        <div class="group-card">
+    <main class="note-v1">
+        <div class="note-field">
+            <div class="note-search">
+
+            </div>
+            <div class="group-card">
             {% include 'home/saved_card.html' %}
+            </div>
         </div>
+
         <form class="card" action="" method="POST" id="envio">
             <div class="title-card">
               <textarea placeholder="Título" maxlength="40" name="title" id="title"></textarea>
-                <div style="display:flex; align-items: center;margin: 5px; margin-right: 10px">
-                     {{ user.nome }}
-                </div>
             </div>
             <div class="content-card">
               <textarea placeholder="Digite..." maxlength="1000" name="content" id="content"></textarea>

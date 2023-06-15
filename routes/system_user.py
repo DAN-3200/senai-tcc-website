@@ -19,7 +19,7 @@ from main import (
     lm, # Login Manage
     by, # Flask-Bcrypt
 )
-from models.model import card, perfil
+from models.model import perfil
 from forms.Forms import formRegister, formLogin
 
 # -- Login/Register

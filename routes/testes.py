@@ -19,14 +19,14 @@ from main import (
     lm, # Login Manage
     by, # Flask-Bcrypt
 )
-from models.model import card, perfil
+from models.model import perfil
 from forms.Forms import formRegister, formLogin
 
 # -- implementações
 @app.route('/profile', methods=['GET'])
 def profile():
     file = url_for('static', filename='img/Setup-bro.png')
-    return render_template('test/profile.html', user=current_user, file=file)
+    return render_template('tools/profile.html', user=current_user, file=file)
 
 @app.route('/config', methods=['GET', 'POST'])
 def config():
@@ -36,10 +36,10 @@ def config():
         db.session.commit()
         return redirect(url_for('Home'))
 
-    return render_template('test/config.html', form=formRegister(), user=current_user.nome)
+    return render_template('tools/config.html', form=formRegister(), user=current_user.nome)
 
 # -- Testando AJAX
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/tools', methods=['GET', 'POST'])
 def test():
     return render_template('new/dashboard.html')
 

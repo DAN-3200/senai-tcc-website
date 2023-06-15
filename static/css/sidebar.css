@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
+/* Geral -------------------------------------------------------------- */
+*{
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+body{
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: #C7D1D6;
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+}
+
+:root{
+    --bar-width: 85px;
+
+    --tran-02: all 0.25s ease;
+    --tran-03: all 0.5s ease;
+   
+}
+
+/* Sidebar -------------------------------------------------------------- */
+nav{
+    width: 250px;
+    height: 100%;
+    padding: 10px 12.5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    z-index: 3;
+    float: left;
+    position: fixed;
+    top:0;
+    left:0;
+
+    background-color: #28282b;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    transition: var(--tran-03)
+}
+
+nav hr{
+    width: 100%;
+    border: none;
+    background-color: #7070707a;
+    height: 2px;
+    border-radius: 5px;
+}
+
+/* ---- Close sidebar ----------------------------------------------- */
+nav.close{
+    width: var(--bar-width);
+    transition: var(--tran-02);
+}
+
+nav.close span{
+    display: none;
+}
+
+nav.close .logo-web{
+    justify-content: center;
+}
+
+nav.close .menu-icon{
+    width: 175%;
+    transform: translateX(-35px);
+    padding-left: 100%;
+}
+
+nav.close .menu-icon:hover{
+    transition: 0.3s;
+    transform: translateX(-30px);
+}
+
+nav.close .premium-icon{
+    display: none;
+}
+
+nav.close .box-profile{
+    display: block;
+}
+
+nav.close .box-profile .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- logo-web ---------------------------- */
+.header{
+    height: 35px;
+}
+
+.logo-web{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-web span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    right: -50px;
+}
+
+.hidden-bar{
+    width: 40px;
+    height: 35px;
+    font-size: 16px;
+    border: none;
+    padding: 5px;
+    border-radius: 2.5px;
+
+    color: rgb(177, 177, 177);
+    background-color: transparent;
+    transition: 0.2s;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.hidden-bar:hover{
+    transition: 0.3s;
+    background-color: rgba(75, 75, 75, 0.5);
+    color: white;
+}
+
+.hidden-bar:active{
+    background-color: rgba(75, 75, 75, 0.25);
+}
+
+.ZenDo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 30px;
+    cursor: default;
+}
+
+.ZenDo .Zen{
+    color: white;
+}
+
+.ZenDo .Do{
+    color: rgb(118, 219, 70);
+}
+
+/* ---- profile ---------------------------- */
+.box-profile{
+    display: flex;
+    align-items: center;
+    min-height: 20px;
+    gap: 10px;
+    padding: 5px 5px;
+
+    border-radius: 7.5px;
+    border: 2px solid rgba(83, 83, 83, 0.5);
+    background-color: rgba(29, 29, 29, 0.349);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.box-profile:hover{
+    transition: 0.3s;
+    border: 2px solid rgb(100, 100, 100);
+}
+
+.header-text{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: white;
+}
+
+.profile .img{
+    width: 35px;
+    height: 35px;
+    background-color: rgba(75, 75, 75, 0.5);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.profile .img img{
+    max-width: 40px;
+    min-width: 40px;
+    border-radius: 5px;
+}
+.profile .image{
+    min-height: 20px;
+}
+
+.profile .text{
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.header-text .name{
+    font-weight: 600;
+}
+
+.header-text .profession{
+    font-weight: 100;
+    font-size: 12px;
+}
+
+/* ---- Menu ---------------------------- */
+.menu-bar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 67%;
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;  
+}
+
+.menu-icon{
+    width: 130%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 40%;
+
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: rgba(75, 75, 75, 0);
+    color: rgb(177, 177, 177);
+    transition: 0.2s;
+    cursor: pointer;
+    white-space: nowrap;
+
+    transform: translateX(-65px);
+}
+
+.menu-icon i{
+    font-size: 16px;
+}
+
+.menu-icon span{
+    font-weight: bold;
+}
+
+.menu-icon:hover{
+    transition: 0.3s;
+    background-color: rgb(56, 172, 85);
+    color: white;
+    transform: translateX(-55px);
+}
+
+.upgrade{
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    border: 2px solid rgb(255, 169, 40);
+    border-radius: 5px;
+    color: rgb(255, 169, 40);
+    font-size: 12px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.upgrade:hover{
+    animation: blink 0.5s normal;
+}
+
+@keyframes blink {
+    from{
+        color: rgb(255, 255, 255);
+        border: 2px solid white;
+    }
+    to{
+        
+    }
+}
+
+
+/* Main -------------------------------------------------------------- */
+main{
+    margin-left: var(--bar-width);
+    width: 100%;
+    height: 100%;
+}
+
