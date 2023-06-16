@@ -1,50 +1,39 @@
-// Fazer um CRUD de Item
+//Note
+const create = document.getElementById('create-note')
+create.addEventListener("click", function() {
+  Create();
+});
 
 async function Create() {
-    const textField = document.getElementById('field')
+    const title = document.getElementById('title').value
+    const content = document.getElementById('content').value
 
-    if(textField.value.length <= 0){
+    if(title.length <= 0){
         alert('Não tem nada')
         return;
     }else{
-         const molde = {
-            'content' : textField
+        const molde = {
+            'title' : title,
+            'content' : content,
         }
-        const validate = await ajax(molde,'/ajax/create');
-        //console.log(validate);
 
+        const validate = await ajax(molde,'/notes/create');
+        console.log(validate);
         Read(validate);
-        textField.value = '';
+
     }
 }
 
 function Read(DICT){
     const item = document.createElement('div')
-    item.className = 'mini-card'
+    item.className = 'saved-card'
     item.id = `#${DICT.id}`
 
     item.innerHTML = `
-        <input name="check" type="checkbox">
-        <input class="texto" type="text" value="${DICT.content}">
-        <div>
-            <button onclick="Update(${DICT.id})">U</button>
-            <button onclick="Delete(${DICT.id})">D</button>
-        </div>
+        <a class="sav-card-show" href="/home/update/${DICT.id}"><span>${DICT.title}</span></a>
+        <a class="excluir" style="font-size: 14px " type="button" href="/home/delete/${DICT.id}"><i class="fa-solid fa-trash-can"></i></a>
     `
-    document.getElementById('group').appendChild(item)
-}
-
-function Delete(id){
-    ajax({'id': id}, '/ajax/delete')
-    const element = document.getElementById(`#${id}`);
-    
-    element.remove();
-}
-
-function Update(id){
-    const ent = document.getElementById(`#${id}`).childNodes
-    //console.log(ent[3])
-    ajax({'id': id , 'content': ent[3].value }, '/ajax/update')
+    document.getElementById('group-card').appendChild(item)
 }
 
 function ajax(dict, url){
@@ -74,3 +63,4 @@ function ajax(dict, url){
         })
     )
 }
+

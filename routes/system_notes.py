@@ -7,8 +7,6 @@ from flask import (
     make_response
 )
 from flask_login import (
-    login_user, # Introduz o usuário na sessão
-    logout_user, # Retira o usuário da sessão
     current_user, # pega o usuário da sessão
     login_required, # Restringir o Usuário de acessar certas views
 )
@@ -16,38 +14,51 @@ from flask_login import (
 from main import (
     app, # Aplicação
     db, # Database
-    lm, # Login Manage
-    by, # Flask-Bcrypt
 )
-from models.model import notes, todo
+from models.model import notes
 
 # -- CRUD de notas
 @app.route('/home', methods=['GET'])
 @login_required
 def Home():
     print(f"{current_user.id}|{current_user}")
-    cards = todo.query.filter_by(fk_user=current_user.id)
+    cards = notes.query.filter_by(fk_user=current_user.id)
     return render_template('home/create.html', box=cards, user=current_user)
 
-@app.route('/home', methods=['POST'])
+@app.route('/notes/create', methods=['POST'])
 @login_required
 def Create():
-    if request.method == 'POST':
+    try:
+        print('--- /notes/create ---')
+
+        # -- pega requisição JSON
+        Data = request.get_json()
+        print(f"   {Data}")
+
+        # -- Parte lógica -- faça oq quiser com a informação
         # Request
-        title = request.form['title']
-        content = request.form['content']
+        title = Data.get('title')
+        content = Data.get('content')
         user = current_user.id
 
+        note = notes(title=title, content=content, user=user)
         # Envio ao banco
-        db.session.add(todo(content=content, user=user))
+        db.session.add(note)
         db.session.commit()
 
-    return redirect(url_for('Home'))
+        # -- formate a nova informação em JSON e retorne
+        return make_response(jsonify({
+            'id': note.id,
+            'title': note.title,
+            'create': True,
+        }), 200)
+    except:
+        return make_response(jsonify({'create': False}), 200)
 
 @app.route('/home/update/<index>', methods=['GET', 'POST'])
 @login_required
 def Update(index):
-    my_card = todo.query.get(index)
+    my_card = notes.query.get(index)
 
     if current_user.id == my_card.fk_user:
         if request.method == 'POST':
@@ -66,7 +77,7 @@ def Update(index):
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required
 def Delete(index):
-    my_card = todo.query.get(index)
+    my_card = notes.query.get(index)
     if current_user.id == my_card.fk_user:
         db.session.delete(my_card)
         db.session.commit()

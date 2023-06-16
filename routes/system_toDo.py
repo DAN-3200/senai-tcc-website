@@ -16,7 +16,6 @@ from main import (
 )
 from models.model import todo
 
-
 @app.route('/toDo', methods=['GET', 'POST'])
 def toDo():
     cards = todo.query.filter_by(fk_user=current_user.id)
@@ -32,7 +31,7 @@ def create_AJAX():
         print(f"   {Data}")
 
         # -- Parte lógica -- faça oq quiser com a informação
-        content = Data.get('word')
+        content = Data.get('content')
         user = current_user.id
 
         card = todo(content=content, user=user)
