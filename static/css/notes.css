@@ -9,12 +9,16 @@ main{
     grid-template-columns: 25% 75%;
 }
 
+:root{
+    --size-bar: 45px;
+}
+
 /* Card Settings --------------------------> */
 
 .card{
     min-height: 100%;
     display: grid;
-    grid-template-rows: 55px auto 40px;
+    grid-template-rows: var(--size-bar) 55px auto 30px;
 
     background-color: white;
     border-left: #28282b 2px solid;
@@ -22,13 +26,11 @@ main{
 
 .title-card{
     color: #28282b;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1.25px, rgba(9, 30, 66, 0.13) 0px 1px;
-
     display: flex;
     gap: 10px;
 
     border-radius: 0px 7.5px 0px 0px;
-    padding: 10px 5px;
+    padding: 10px 10px;
 }
 
 .title-card textarea{
@@ -38,16 +40,18 @@ main{
     width: 100%;
     font-size: 18px;
     overflow: hidden;
-    color: #28282b;
  
     background: transparent;
     border: 2px solid transparent;
     border-radius: 5px;
     outline: none;
 }
+.title-card #title{
+    font-size: 20px;
+}
 
 .content-card{
-    padding: 5px;
+    padding: 5px 10px;
 }
 .content-card textarea{
     font-size: 16px;
@@ -67,6 +71,7 @@ main{
 }
 .sav-card-show{
     width: 100%;
+    height: 80%;
     padding: 2.5px;
     border: 2px solid transparent;
     border-radius: 5px;
@@ -82,13 +87,14 @@ main{
 
 .tools-card{
     padding: 5px;
-    padding-right: 15px;
+    padding-left: 15px;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     gap: 10px;
 
-    border-radius: 0px 0px 7.5px 0px;
+    background-color: rgb(140, 219, 153);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 .tools-card button, .excluir{
@@ -103,6 +109,7 @@ main{
 }
 
 .excluir{
+    color: #28282b;
     min-width: 15px;
     padding: 2.5px;
 }
@@ -112,38 +119,25 @@ main{
     transition: 0.25s;
 }
 
-.tools-card select{
-    background: transparent;
-    border: none;
-    outline: none;
-    transition: 0.2s;
-    max-width: 75px;
-    width: 100%;
-    padding: 5px 2.5px;
-    border-radius: 2.5px;
-    cursor: pointer;
-}
-
-.tools-card .save-action, .create-action{
+.create-action{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 20px;
 
     background: transparent;
-    min-width: 60px;
+    width: 20px;
     height: 25px;
     color: #28282b;
-    padding: 0px 5px;
+    padding: 1px;
     border-radius: 5px;
     border: 2.5px solid transparent;
     transition: 0.2s;
 }
 
-.tools-card .save-action:hover, .create-action:hover{
+.create-action:hover{
     transition: 0.3s;
-    color: rgb(86, 166, 0);
-    border: 1px solid rgb(86, 166, 0);
+    color: white;
 }
 
 /* Note-field */
@@ -155,7 +149,7 @@ main{
 .note-search{
     background-color: #373742;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1.25px, rgba(9, 30, 66, 0.13) 0px 1px;
-    height: 55px;
+    height: var(--size-bar);
     padding: 5px 10px;
     padding-left: 15px;
 
@@ -214,18 +208,11 @@ main{
 
 .saved-card:hover{
     transition: 0.5s;
+    cursor: pointer;
     /* transform: scale(1.1); */
     transform: translateY(-5px);
 }
 
-a{
-    text-decoration: none;
-    color: #28282b;
-}
-
-.sav-card-show span{
-    padding: 5px;
-}
 
 @keyframes reveal-box{
     from {transform: translateX(-100%);} 

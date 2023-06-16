@@ -12,21 +12,17 @@
             </div>
         </div>
 
-        <div class="card" id="envio">
+        <div class="card" id="">
+            <div class="tools-card">
+                <button class="create-action" id="create-note"><i class="fa-solid fa-square-plus"></i></button>
+            </div>
             <div class="title-card">
               <textarea placeholder="Título" maxlength="40" name="title" id="title"></textarea>
             </div>
             <div class="content-card">
               <textarea placeholder="Digite..." maxlength="4000" name="content" id="content"></textarea>
             </div>
-            <div class="tools-card">
-                <button class="create-action" id="create-note"> CREATE </button>
-                <select name="priority">
-                    <option value="1">Grau I</option>
-                    <option value="2">Grau II</option>
-                    <option value="3">Grau III</option>
-                </select>
-            </div>
+            <div class="desc-card"></div>
         </div>
     </main>
 {% endblock %}

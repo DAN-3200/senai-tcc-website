@@ -23,56 +23,49 @@ from models.model import notes
 def Home():
     print(f"{current_user.id}|{current_user}")
     cards = notes.query.filter_by(fk_user=current_user.id)
-    return render_template('home/create.html', box=cards, user=current_user)
+    return render_template('home/note.html', box=cards, user=current_user)
 
 @app.route('/notes/create', methods=['POST'])
 @login_required
-def Create():
+def create():
     try:
         print('--- /notes/create ---')
-
         # -- pega requisição JSON
         Data = request.get_json()
         print(f"   {Data}")
 
         # -- Parte lógica -- faça oq quiser com a informação
-        # Request
-        title = Data.get('title')
-        content = Data.get('content')
+        title = 'Sem título'
+        content = 'Conteudo...'
         user = current_user.id
 
         note = notes(title=title, content=content, user=user)
-        # Envio ao banco
         db.session.add(note)
         db.session.commit()
 
         # -- formate a nova informação em JSON e retorne
         return make_response(jsonify({
             'id': note.id,
-            'title': note.title,
             'create': True,
         }), 200)
     except:
         return make_response(jsonify({'create': False}), 200)
 
-@app.route('/home/update/<index>', methods=['GET', 'POST'])
+@app.route('/home/getData/', methods=['GET', 'POST'])
 @login_required
-def Update(index):
-    my_card = notes.query.get(index)
+def getData(index):
 
-    if current_user.id == my_card.fk_user:
-        if request.method == 'POST':
-            # Request
-            my_card.title = request.form.get('title')
-            my_card.content = request.form.get('content')
+    print('--- /home/update/ ---')
+    Data = request.get_json()
+    my_note = notes.query.get(Data.get('id'))
 
-            db.session.commit()
-
-            return redirect(url_for('Home'))
-        else:
-            return render_template('home/edit.html', card=my_card, user=current_user)
-    else:
-        return redirect(url_for('Home'))
+    return make_response(jsonify({
+        'id': my_note.id,
+        'title': my_note.title,
+        'content': my_note.content,
+        'delete': my_note.delete,
+        'date': my_note.date,
+    }), 200)
 
 @app.route('/home/delete/<index>', methods=['GET', 'POST'])
 @login_required

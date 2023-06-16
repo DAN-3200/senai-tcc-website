@@ -1,8 +1,6 @@
 from flask import (
     render_template, # Renderizar Página
     request, # Pegar informações enviadas pelos forms
-    url_for, # Caminho url do arquivo
-    redirect, # Redirecionar a uma função
     jsonify, # formatar em JSON
     make_response
 )
@@ -43,7 +41,7 @@ def create_AJAX():
         # -- formate a nova informação em JSON e retorne
         return make_response(jsonify({
             'id': card.id,
-            'content' : card.content,
+            'content': card.content,
             'create': True,
         }), 200)
 

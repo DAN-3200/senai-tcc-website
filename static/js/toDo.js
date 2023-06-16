@@ -1,14 +1,14 @@
 // Fazer um CRUD de Item
 
 async function Create() {
-    const textField = document.getElementById('field')
+    const text = document.getElementById('field')
 
-    if(textField.value.length <= 0){
+    if(text.length <= 0){
         alert('Não tem nada')
         return;
     }else{
          const molde = {
-            'content' : textField
+            'content' : text.value,
         }
         const validate = await ajax(molde,'/ajax/create');
         //console.log(validate);

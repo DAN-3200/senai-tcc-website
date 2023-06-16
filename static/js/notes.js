@@ -4,34 +4,37 @@ create.addEventListener("click", function() {
   Create();
 });
 
+// CRUD de Notas
 async function Create() {
+    const validate = await ajax({},'/notes/create');
+    console.log(validate);
+    createCard(validate);
+}
+
+// getData
+async function getData(id){
+    const validate = await ajax({'id': id},'/notes/create');
+    console.log(validate);
+}
+
+function update(){
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value
 
-    if(title.length <= 0){
-        alert('Não tem nada')
-        return;
-    }else{
-        const molde = {
-            'title' : title,
-            'content' : content,
-        }
-
-        const validate = await ajax(molde,'/notes/create');
-        console.log(validate);
-        Read(validate);
-
+    const molde = {
+        'title' : title,
+        'content' : content,
     }
 }
 
-function Read(DICT){
+function createCard(DICT){
     const item = document.createElement('div')
     item.className = 'saved-card'
     item.id = `#${DICT.id}`
 
     item.innerHTML = `
-        <a class="sav-card-show" href="/home/update/${DICT.id}"><span>${DICT.title}</span></a>
-        <a class="excluir" style="font-size: 14px " type="button" href="/home/delete/${DICT.id}"><i class="fa-solid fa-trash-can"></i></a>
+        <button class="sav-card-show" onclick=""><span>Sem título...</span></button>
+        <button class="excluir" style="font-size: 14px " type="button" onclick=""><i class="fa-solid fa-trash-can"></i></button>
     `
     document.getElementById('group-card').appendChild(item)
 }
