@@ -11,10 +11,10 @@ async function Create() {
             'content' : text.value,
         }
         const validate = await ajax(molde,'/ajax/create');
-        //console.log(validate);
+        console.log(validate);
 
         Read(validate);
-        textField.value = '';
+        text.value = '';
     }
 }
 

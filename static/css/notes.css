@@ -208,11 +208,23 @@ main{
 
 .saved-card:hover{
     transition: 0.5s;
-    cursor: pointer;
-    /* transform: scale(1.1); */
     transform: translateY(-5px);
 }
+.saved-card button{
+    cursor: pointer;
+}
 
+.desc-card{
+    padding: 5px 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: end;
+}
+
+.desc-card span{
+    color: silver;
+}
 
 @keyframes reveal-box{
     from {transform: translateX(-100%);} 

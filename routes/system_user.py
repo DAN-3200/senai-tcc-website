@@ -23,6 +23,7 @@ from models.model import perfil
 from forms.Forms import formRegister, formLogin
 
 # -- Login/Register
+@app.route('/login', methods=['POST','GET'])
 @app.route('/', methods=['POST','GET'])
 def login():
     # Agora Loga tanto com Username quanto com Email

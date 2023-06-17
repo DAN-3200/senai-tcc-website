@@ -1,10 +1,8 @@
 from flask import (
     render_template, # Renderizar Página
     request, # Pegar informações enviadas pelos forms
-    url_for, # Caminho url do arquivo
-    redirect, # Redirecionar a uma função
     jsonify, # formatar em JSON
-    make_response
+    make_response, # formartar uma respostar HTTP
 )
 from flask_login import (
     current_user, # pega o usuário da sessão
@@ -18,16 +16,33 @@ from main import (
 from models.model import notes
 
 # -- CRUD de notas
-@app.route('/home', methods=['GET'])
+@app.route('/home', methods=['GET', 'POST'])
 @login_required
 def Home():
     print(f"{current_user.id}|{current_user}")
     cards = notes.query.filter_by(fk_user=current_user.id)
     return render_template('home/note.html', box=cards, user=current_user)
 
+@app.route('/notes/getData', methods=['POST'])
+@login_required
+def GetData():
+
+    print('--- /notes/getData ---')
+    Data = request.get_json()
+    print(f"   {Data}")
+    my_note = notes.query.get(Data.get('id'))
+
+    return make_response(jsonify({
+        'id': my_note.id,
+        'title': my_note.title,
+        'content': my_note.content,
+        'delete': my_note.delete,
+        'date': my_note.date,
+    }), 200)
+
 @app.route('/notes/create', methods=['POST'])
 @login_required
-def create():
+def Create():
     try:
         print('--- /notes/create ---')
         # -- pega requisição JSON
@@ -51,28 +66,34 @@ def create():
     except:
         return make_response(jsonify({'create': False}), 200)
 
-@app.route('/home/getData/', methods=['GET', 'POST'])
+@app.route('/notes/update', methods=['POST'])
 @login_required
-def getData(index):
-
-    print('--- /home/update/ ---')
+def Update():
+    print('--- /notes/update ---')
     Data = request.get_json()
+    print(f"   {Data}")
     my_note = notes.query.get(Data.get('id'))
 
+    my_note.title = Data.get('title')
+    my_note.content = Data.get('content')
+
+    db.session.commit()
+
     return make_response(jsonify({
-        'id': my_note.id,
-        'title': my_note.title,
-        'content': my_note.content,
-        'delete': my_note.delete,
-        'date': my_note.date,
-    }), 200)
+        'update':True,
+    }))
 
-@app.route('/home/delete/<index>', methods=['GET', 'POST'])
+@app.route('/notes/delete', methods=['POST'])
 @login_required
-def Delete(index):
-    my_card = notes.query.get(index)
-    if current_user.id == my_card.fk_user:
-        db.session.delete(my_card)
-        db.session.commit()
+def Delete():
+    print('--- /notes/delete ---')
+    Data = request.get_json()
+    print(f"   {Data}")
+    my_note = notes.query.get(Data.get('id'))
 
-    return redirect(url_for('Home'))
+    db.session.delete(my_note)
+    db.session.commit()
+
+    return make_response(jsonify({
+        'delete': True,
+    }), 200)
