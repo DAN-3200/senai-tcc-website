@@ -51,7 +51,7 @@ def Create():
 
         # -- Parte lógica -- faça oq quiser com a informação
         title = 'Sem título'
-        content = 'Conteudo...'
+        content = ''
         user = current_user.id
 
         note = notes(title=title, content=content, user=user)

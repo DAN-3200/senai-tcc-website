@@ -1,7 +1,7 @@
 {% extends "home/sidebar.html" %}
 
 {% block content %}
-    <main class="note-v1">
+    <main>
         <div class="note-field">
             <div class="note-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="card" id="">
+        <div class="card hidden-card" id="card">
             <div class="tools-card">
                 <button class="create-action" id="create-note"><i class="fa-solid fa-square-plus"></i></button>
             </div>
@@ -23,7 +23,11 @@
               <textarea placeholder="Digite..." maxlength="4000" name="content" id="content"></textarea>
             </div>
             <div class="desc-card">
-                <span id="id-card">#2</span>
+                <span id="date-card"></span>
+            </div>
+            <div class="hidden-img">
+                <img src="{{ url_for('static', filename='img/Time management-rafiki.png') }}" width="400px">
+                <span>Selecione ou crie um card</span>
             </div>
         </div>
     </main>

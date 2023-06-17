@@ -1,19 +1,21 @@
-/* Main */
-main{
-    width: 100%;
-    height: 100%;
-}
-
-.note-v1{
-    display: grid;
-    grid-template-columns: 25% 75%;
-}
-
+/* Geral ------------------------- */
 :root{
     --size-bar: 45px;
 }
 
-/* Card Settings --------------------------> */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Main ------------------------ */
+main{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 27% 73%;
+}
+
+/* Card Settings ---------------- */
 
 .card{
     min-height: 100%;
@@ -66,15 +68,16 @@ main{
     padding: 10px;
 }
 
-::-webkit-scrollbar {
-    width: 0px;
-}
 .sav-card-show{
     width: 100%;
     height: 80%;
     padding: 2.5px;
     border: 2px solid transparent;
     border-radius: 5px;
+}
+
+.sav-card-show span{
+    word-wrap: break-word;
 }
 .content-card textarea:hover, .title-card textarea:hover, .sav-card-show:hover{
     transition: 0.3s;
@@ -140,7 +143,47 @@ main{
     color: white;
 }
 
-/* Note-field */
+.desc-card{
+    padding: 5px 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: end;
+}
+
+.desc-card span{
+    color: silver;
+}
+
+/* hidden-card --------------- */
+
+.hidden-card{
+    grid-template-rows: var(--size-bar) auto;
+    background-color: #373742;
+}
+
+.hidden-card .title-card, .hidden-card .content-card, .hidden-card .desc-card{
+    display: none;
+}
+
+.hidden-img{
+    display: none;
+}
+.hidden-card .hidden-img{
+    display: flex;
+    display: visible;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 50;
+}
+
+
+/* Note-field --------------- */
 .note-field{
     display: flex;
     flex-direction: column;
@@ -173,6 +216,8 @@ main{
     border-right: none;
 }
 
+/* group-card --------------- */
+
 .group-card{
     display: flex;
     flex-direction: column;
@@ -186,12 +231,12 @@ main{
 .saved-card{
     width: 90%;
     min-height: 70px;
-    max-height: 70px;
+    max-height: 90%;
     padding: 10px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 10%;
     align-items: center;
-    justify-content: space-between;
     gap: 5px;
 
     /* Visual */
@@ -214,17 +259,8 @@ main{
     cursor: pointer;
 }
 
-.desc-card{
-    padding: 5px 25px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: end;
-}
 
-.desc-card span{
-    color: silver;
-}
+/* Outros ------------------------- */
 
 @keyframes reveal-box{
     from {transform: translateX(-100%);} 
