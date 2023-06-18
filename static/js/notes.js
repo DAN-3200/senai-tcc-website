@@ -71,6 +71,9 @@ async function Create() {
     const validate = await ajax({},'/notes/create');
     //console.log(validate);
     createNote(validate);
+    if(id_card == null){
+        getData(validate.id)
+    }
 }
 
 function createNote(DICT){
