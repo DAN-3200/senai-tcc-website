@@ -1,4 +1,12 @@
-{% extends "home/sidebar.html" %}
+{% extends "base/sidebar.html" %}
+
+{% block title %}
+    <title>Notes</title>
+{% endblock %}
+
+{% block links %}
+    <link href="{{ url_for('static', filename='css/notes.css')}}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
 {% block content %}
     <main>
@@ -8,10 +16,9 @@
                 <input type="text">
             </div>
             <div class="group-card" id="group-card">
-            {% include 'home/saved_card.html' %}
+            {% include 'base/notes/saved_notes.html' %}
             </div>
         </div>
-
         <div class="card hidden-card" id="card">
             <div class="tools-card">
                 <button class="create-action" id="create-note"><i class="fa-solid fa-square-plus"></i></button>
@@ -31,4 +38,8 @@
             </div>
         </div>
     </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/notes.js')}}"></script>
 {% endblock %}

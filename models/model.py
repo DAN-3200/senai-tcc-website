@@ -3,7 +3,7 @@ import datetime
 from main import db, lm
 from flask_login import UserMixin
 
-@lm.user_loader # ainda não sei pra que serve isso, mas é necessário pra o Login-Manager
+@lm.user_loader
 def user_loader(id):
     return perfil.query.get(id)
 
@@ -51,7 +51,27 @@ class todo(db.Model):
     check = db.Column(db.Boolean)
 
     fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
-
     def __init__(self, content, user):
         self.content = content
         self.fk_user = user
+
+class sketch(db.Model):
+    __tablename__ = "sketch"
+
+    fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
+    content = db.Column(db.String(300), nullable=False)
+    def __int__(self, content, user):
+        self.content = content
+        self.fk_user = user
+
+class pomodoro(db.Model):
+    __tablename__ = "pomodoro"
+
+    fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
+    normal = db.Column(db.Float, nullable=False, default=25)
+    short = db.Column(db.Float, nullable=False, default=5)
+    long = db.Column(db.Float, nullable=False, default=15)
+    def __int__(self, normal, short, long):
+        self.normal = normal
+        self.short = short
+        self.long = long

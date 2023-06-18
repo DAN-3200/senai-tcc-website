@@ -1,0 +1,49 @@
+{% extends "base/sidebar.html" %}
+
+{% block title %}
+    <title>Pomodoro</title>
+{% endblock %}
+
+{% block links %}
+    <link href="{{ url_for('static', filename='css/pomodoro.css')}}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="pomodoro">
+            <div class="time-tab">
+                <button class="button-tab">POMODORO</button>
+                <button class="button-tab">SHORT</button>
+                <button class="button-tab" id="parar">LONG</button>
+            </div>
+            <div class="time-view">
+                <span id="cronometro"> -- : -- </span>
+            </div>
+            <div class="time-tools">
+                <button class="play-button" id="iniciar"><i class="fa-solid fa-play"></i></button>
+                <button class="reload-button" id="zerar"><i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+        </div>
+
+        <div class="toDo">
+            <div class="create-field">
+                <div class="input-field">
+                    <input type="text" maxlength="40" id="field">
+                    <button><i class="fa-solid fa-pen" onclick="Create()"></i></button>
+                </div>
+            </div>
+            <div class="group" id="group">
+                <div class="mini-card">
+                    <input type="checkbox" name="" id="">
+                    <input type="text" maxlength="40">
+                    <button><i class="fa-solid fa-circle-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/pomodoro.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/toDo.js')}}"></script>
+{% endblock %}

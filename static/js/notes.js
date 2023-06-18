@@ -1,4 +1,3 @@
-// Meta: CRUD de Notas
 // Fetch == AJAX
 function ajax(dict, url){
     // "AJAX" --> fetch('url',{...}).then(function(response){});
@@ -28,6 +27,8 @@ function ajax(dict, url){
     )
 }
 
+// Meta: CRUD de Notas
+
 // --- Captura
 document.getElementById('create-note').addEventListener("click", function() {
     Create();
@@ -52,7 +53,7 @@ function hidden_card(){
 
 async function getData(id){
     const validate = await ajax({'id': id},'/notes/getData');
-    console.log(validate);
+    console.log(validate.id);
 
     if(close != true){
         close = true

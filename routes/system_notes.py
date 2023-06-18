@@ -16,12 +16,12 @@ from main import (
 from models.model import notes
 
 # -- CRUD de notas
-@app.route('/home', methods=['GET', 'POST'])
+@app.route('/notes', methods=['GET', 'POST'])
 @login_required
-def Home():
+def Notes():
     print(f"{current_user.id}|{current_user}")
     cards = notes.query.filter_by(fk_user=current_user.id)
-    return render_template('home/note.html', box=cards, user=current_user)
+    return render_template('base/notes/notes.html', box=cards, user=current_user)
 
 @app.route('/notes/getData', methods=['POST'])
 @login_required

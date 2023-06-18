@@ -3,8 +3,6 @@ from flask import (
     request, # Pegar informações enviadas pelos forms
     url_for, # Caminho url do arquivo
     redirect, # Redirecionar a uma função
-    jsonify, # formatar em JSON
-    make_response
 )
 from flask_login import (
     login_user, # Introduz o usuário na sessão
@@ -16,7 +14,6 @@ from flask_login import (
 from main import (
     app, # Aplicação
     db, # Database
-    lm, # Login Manage
     by, # Flask-Bcrypt
 )
 from models.model import perfil
@@ -35,7 +32,7 @@ def login():
         user = perfil.query.filter_by(nome=nome).first() or perfil.query.filter_by(email=nome).first()
         if user and by.check_password_hash(user.senha, senha):
             login_user(user, remember=remember)
-            return redirect(url_for('Home'))
+            return redirect(url_for('Notes'))
 
     return render_template('login/login.html', form=formLogin())
 

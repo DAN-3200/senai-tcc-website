@@ -1,0 +1,223 @@
+main{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+/* -- pomodoro ---------------------------------------------------- */
+.pomodoro{
+    width: 90%;
+    min-height: 90%;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    background-color: #DF546D;
+    border-radius: 5px;
+}
+
+/* -- tab */
+
+.time-tab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* background-color: rgb(231, 107, 107); */
+    padding: 5px;
+    margin-top: 5px;
+    border-bottom: #28282b 2px solid;
+}
+
+.button-tab{
+    width: 80px;
+    padding: 5px;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 2.5px;
+    color: #28282b;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.button-tab:hover{
+    transition: 0.2s;
+    color: white;
+}
+
+.target-button{
+    background-color:  #3030307e;
+    color: white;
+}
+
+/* -- view */
+
+.time-view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: rgb(231, 107, 107); */
+
+}
+
+.time-view span{
+    font-size: 100px;
+    font-weight: bolder;
+    color: white;
+}
+
+.time-view span:hover{
+    animation: blink 0.25s normal;
+    cursor: default;
+}
+
+/* -- tools */
+
+.time-tools{
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* background-color: white; */
+}
+
+.play-button{
+    width: 70%;
+    padding: 5px 20px;
+
+    background-color: #28282bd5;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    cursor: pointer;
+    transition: 0.1s;
+    color: white;
+}
+
+.reload-button{
+    background-color: #28282bd5;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    cursor: pointer;
+    transition: 0.1s;
+    color: white;
+
+}
+
+.play-button:active, .reload-button:active{
+    background-color: #a33e50;
+    box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+@keyframes blink{
+    from{
+        color: rgba(255, 255, 255, 0.473);
+    }to{
+
+    }
+}
+
+
+/* -- toDo ---------------------------------------------------- */
+
+.toDo{
+    width: 90%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    background-color: #fff1b1;
+    border-left: 12.5px #DF546D solid;
+    border-radius: 5px;
+}
+.create-field{
+    border-bottom: 2.5px #28282b solid;
+    padding: 5px 15px;
+}
+
+.input-field{
+    width: 100%;
+    min-height: 50px;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: auto 5%;
+    gap: 1px;
+}
+
+.input-field input{
+    color: #28282b;
+    border: 1px solid transparent;
+    border-bottom: 3px solid #28282b;
+    outline: none;
+    background-color: transparent;
+    width: 98%;
+}
+
+.input-field button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.input-field button:active{
+    transform: translateY(2px);
+}
+
+/* -- toDo mini-card  */
+.group{
+    /* background-color: #28282b; */
+    height: 100%;
+    overflow: auto;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.group::-webkit-scrollbar {width: 0! important}
+
+.mini-card{
+    width: 100%;
+    min-height: 50px;
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: 5% auto 7%;
+    gap: 5px;
+
+    background-color: rgba(31, 31, 31, 0.144);
+    border-left: 10px solid #DF546D;
+    border-radius: 2.5px;
+    animation: reveal 0.3s;
+}
+
+.mini-card input{
+    color: #28282b;
+    border: 1px solid transparent;
+    border-bottom: 3px solid #28282b;
+    outline: none;
+    background-color: transparent;
+}
+
+.mini-card button{
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.mini-card button:hover{
+    transition: 0.3s;
+    color: #DF546D;
+}
