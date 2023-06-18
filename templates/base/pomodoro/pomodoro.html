@@ -1,7 +1,7 @@
 {% extends "base/sidebar.html" %}
 
 {% block title %}
-    <title>Pomodoro</title>
+    <title id="time-title">Pomodoro</title>
 {% endblock %}
 
 {% block links %}
@@ -14,10 +14,10 @@
             <div class="time-tab">
                 <button class="button-tab">POMODORO</button>
                 <button class="button-tab">SHORT</button>
-                <button class="button-tab" id="parar">LONG</button>
+                <button class="button-tab">LONG</button>
             </div>
             <div class="time-view">
-                <span id="cronometro"> -- : -- </span>
+                <span id="cronometro"> 00 : 00 </span>
             </div>
             <div class="time-tools">
                 <button class="play-button" id="iniciar"><i class="fa-solid fa-play"></i></button>
@@ -33,11 +33,16 @@
                 </div>
             </div>
             <div class="group" id="group">
-                <div class="mini-card">
-                    <input type="checkbox" name="" id="">
-                    <input type="text" maxlength="40">
-                    <button><i class="fa-solid fa-circle-xmark"></i></button>
-                </div>
+                {% for card in box %}
+                    <div class="mini-card" id="#{{ card.id }}">
+                            <input class="check" type="checkbox">
+                            <input class="texto" type="text" maxlength="40" value="{{ card.content }}">
+                        <div>
+                            <button onclick="Update({{ card.id }})">U</button>
+                            <button onclick="Delete({{ card.id }})">D</button>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </main>

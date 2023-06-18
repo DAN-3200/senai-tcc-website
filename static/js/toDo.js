@@ -25,7 +25,7 @@ function Read(DICT){
 
     item.innerHTML = `
         <input name="check" type="checkbox">
-        <input class="texto" type="text" value="${DICT.content}">
+        <input class="texto" type="text" maxlength="40" value="${DICT.content}">
         <div>
             <button onclick="Update(${DICT.id})">U</button>
             <button onclick="Delete(${DICT.id})">D</button>

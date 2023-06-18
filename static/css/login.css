@@ -1,25 +1,33 @@
 *{
-
     font-family:'Josefin Sans', sans-serif;
+    padding: 0;
+    margin: 0;
 }
+
+:root{
+    --color-p1: #96ba93;
+    --color-p2: #567356;
+}
+
 body {
-    background: rgb(111,82,255);
-    background: linear-gradient(90deg, rgba(111,82,255,1) 0%, rgba(232,122,255,1) 100%);
-   
+    height: 98vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #C7D1D6;
+    /*background: rgb(111,82,255);
+    background: linear-gradient(90deg, rgba(111,82,255,1) 0%, rgba(232,122,255,1) 100%);*/
 }
 
 main{
     width: 1200px;
     height: 550px;
-    margin: auto;
-    margin-top: 50px;
 
     display: grid;
     grid-template-columns: 50% 50%;
     justify-items: center;
-    
 }
-
 
 /* Login ------------------------------> */
 .login{
@@ -29,7 +37,7 @@ main{
     width: 100%;
     /*Visual*/
     background-color: white;
-    border-radius: 10px;
+    border-radius: 7.5px;
     margin: 0px 25px 0px 25px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -41,7 +49,7 @@ main{
     display: block;
     width: 5rem;
     height: 0.3rem;
-    background-color: #6c63ff;
+    background-color: var(--color-p1);
     margin: 0 auto;
     position: absolute;
     border-radius: 10px;
@@ -81,7 +89,7 @@ main{
     border: none;
     border-radius: 5px;
     outline: none;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
 .boxInput input[type='text']:hover, input[type='password']:hover{
@@ -89,7 +97,7 @@ main{
 }
 
 .boxInput input[type='text']:focus-visible, input[type='password']:focus-visible{
-    outline: 1px solid #6c63ff
+    outline: 2px solid var(--color-p2);
 }
 .boxButton{
     width: 100%;
@@ -105,7 +113,7 @@ main{
     justify-content: center;
 
     font-size: 14px;
-    background-color: #6F52FF;
+    background-color: var(--color-p2);
     color:white;
     width: 80%;
     height: 30px;
@@ -120,7 +128,7 @@ main{
 
 .button-flask:hover{
     cursor: pointer;
-    background-color: #6b63fff1;
+    background-color: var(--color-p1);
     transition: 0.1s;
     padding-left: 25px;
 }
@@ -143,7 +151,7 @@ label {
 
 #CB:checked + label {
     /* Estilo personalizado para o checkbox selecionado */
-    background: rgb(111,82,255);
+    background: var(--color-p1);
     animation: trans-color 0.2s;
 }
 
@@ -151,6 +159,9 @@ label {
     from{ 
         background: rgb(220, 213, 255);
     }
+}
+a{
+    color: var(--color-p2);
 }
   
 /*Banner ------------------------------> */

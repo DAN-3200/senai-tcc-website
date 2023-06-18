@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Ubuntu+Mono&display=swap');
+
 /* Geral -------------------------------------------------------------- */
 *{
     box-sizing: border-box;
-
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -23,6 +22,9 @@ a{
 
     --tran-02: all 0.25s ease;
     --tran-03: all 0.5s ease;
+
+    --color-p1: #96ba93;
+    --color-p2: #567356;
 }
 
 /* Sidebar -------------------------------------------------------------- */
@@ -149,11 +151,11 @@ nav.close .box-profile .image{
 }
 
 .ZenDo .Zen{
-    color: white;
+    color: var(--color-p1);
 }
 
 .ZenDo .Do{
-    color: rgb(140, 219, 153);
+    color: var(--color-p2);
 }
 
 /* ---- profile ---------------------------- */
@@ -169,7 +171,6 @@ nav.close .box-profile .image{
     background-color: rgba(29, 29, 29, 0.5);
     transition: 0.2s;
     cursor: pointer;
-    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
 
 }
 
@@ -263,7 +264,7 @@ nav.close .box-profile .image{
 
 .menu-icon:hover{
     transition: 0.3s;
-    background-color: rgb(140, 219, 153);
+    background-color: var(--color-p1);
     color: white;
     transform: translateX(-55px);
 }

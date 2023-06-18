@@ -5,18 +5,23 @@
 }
 
 body {
-    overflow: hidden;
+    height: 98vh;
     display: flex;
     justify-content: center;
     align-items: center;
     
-    background: rgb(111,82,255);
-    background: linear-gradient(90deg, rgba(111,82,255,1) 0%, rgba(232,122,255,1) 100%);
+    background: #C7D1D6;
+    /*background: rgb(111,82,255);
+    background: linear-gradient(90deg, rgba(111,82,255,1) 0%, rgba(232,122,255,1) 100%);*/
+}
+
+:root{
+    --color-p1: #96ba93;
+    --color-p2: #567356;
 }
 
 .container {
-    max-width: 1100px;
-    margin: 50px auto;
+    width: 1100px;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 50% 50%;
@@ -43,7 +48,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: 40px 30px;
-
 
     background-color: #fff;
     border-radius: 10px;
@@ -88,7 +92,7 @@ form{
     display: block;
     width: 5rem;
     height: 0.3rem;
-    background-color: #6c63ff;
+    background-color: var(--color-p2);
     margin: 0 auto;
     position: absolute;
     border-radius: 10px;
@@ -115,7 +119,7 @@ form{
     border-radius: 5px;
     font-size: 0.8rem;
     background-color: rgb(230, 230, 230);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
 .input-box input:hover {
@@ -123,7 +127,7 @@ form{
 }
 
 .input-box input:focus-visible {
-    outline: 1px solid #6c63ff;
+    outline: 2px solid var(--color-p2);
 }
 
 .input-box label,
@@ -162,7 +166,7 @@ form{
 .continue {
     width: 100%;
     border: none;
-    background-color: #6c63ff;
+    background-color:var(--color-p2);
     padding: 0.62rem;
     border-radius: 5px;
     cursor: pointer;
@@ -171,7 +175,7 @@ form{
 
 .continue:hover {
     transition: 0.2s;
-    background-color: #6b63fff1;
+    background-color: var(--color-p1);
     padding-left: 30px;
 }
 

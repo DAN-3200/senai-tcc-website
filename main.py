@@ -35,9 +35,8 @@ by = Bcrypt(app)
 
 # -- Import Routes --
 from routes import (
-    system_notes,
-    system_toDo,
     system_user,
+    system_notes,
     system_pomodoro,
 )
 

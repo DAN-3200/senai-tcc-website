@@ -37,6 +37,8 @@ window.onload = function() {
   new Cronometro(divCronometro, btnIniciar, btnParar, btnZerar);
 }
 
+let debounce;
+const title = document.getElementById('time-title').textContent
 var Cronometro = function(div, btnIniciar, btnParar, btnZerar) {
   var este = this;
   this.estado = null;
@@ -56,9 +58,10 @@ var Cronometro = function(div, btnIniciar, btnParar, btnZerar) {
 
   this.atualizar = function() {
     var str =
-      (este.minuto < 10 ? "3" + este.minuto : este.minuto) + ":" +
+      (este.minuto < 10 ? "3" + este.minuto : este.minuto) + " : " +
       (este.segundo < 10 ? "0" + este.segundo : este.segundo);
     div.innerHTML = str;
+    document.getElementById('time-title').textContent = str;
   }
   this.iniciar = function() {
     if (!este.start) {
@@ -111,11 +114,18 @@ var Cronometro = function(div, btnIniciar, btnParar, btnZerar) {
   // Adicionando listeners
   if (document.addEventListener) {
     btnIniciar.addEventListener("click", function() {
-      este.iniciar();
+        if(debounce != true){
+            este.iniciar();
+            debounce = true;
+            btnIniciar.innerHTML = '<i class="fa-solid fa-pause"></i>'
+        }else{
+             este.parar();
+             debounce = null;
+             btnIniciar.innerHTML = '<i class="fa-solid fa-play"></i>'
+             document.getElementById('time-title').textContent = title
+        }
     });
-    btnParar.addEventListener("click", function() {
-      este.parar();
-    });
+
     btnZerar.addEventListener("click", function() {
       este.zerar();
     });
