@@ -77,7 +77,9 @@ main{
 }
 
 .sav-card-show span{
-    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden; /* "overflow" value must be different from "visible" */
+    text-overflow: ellipsis;
 }
 .content-card textarea:hover, .title-card textarea:hover, .sav-card-show:hover{
     transition: 0.3s;
