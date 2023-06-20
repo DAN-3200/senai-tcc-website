@@ -1,0 +1,30 @@
+{% extends "base/sidebar.html" %}
+
+{% block title %}
+    <title>Dashboard</title>
+{% endblock %}
+
+{% block links %}
+    <link href="{{ url_for('static', filename='css/dashboard.css')}}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="welcome boxs-grid">
+            <div class="welcome-img"></div>
+            <div class="welcome-desc">
+                <span style="font-size: 50px;">Bem-vinda Isabella</span>
+                <span>Vamos produzir!</span>
+            </div>
+        </div>
+        <div class="green boxs-grid"></div>
+        <div class="sketch boxs-grid">
+            <span>BLOCO DE RASCUNHO</span>
+            <textarea placeholder="Digite aqui..."></textarea>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/dashboard.js')}}"></script>
+{% endblock %}

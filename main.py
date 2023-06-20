@@ -38,5 +38,6 @@ from routes import (
     system_user,
     system_notes,
     system_pomodoro,
+    system_dashboard,
 )
 

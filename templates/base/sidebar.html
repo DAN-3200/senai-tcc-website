@@ -31,77 +31,49 @@
                 </div>
                 <hr>
             </div>
-
             <div class="menu-bar">
-                <a href="">
+                <a href="{{ url_for('Dashboard') }}">
                     <button class="menu-icon">
                         <i class="fa-regular fa-house"></i>
                         <span>HOMEPAGE</span>
                     </button>
                 </a>
-
-                <a href="">
-                    <button class="menu-icon">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span>DASHBOARD</span>
-                        <i class="fa-solid fa-bolt-lightning premium-icon" style="color: rgb(255, 191, 73);"></i>
-                    </button>
-                </a>
-
                 <a href="{{ url_for('Notes') }}">
                     <button class="menu-icon">
                         <i class="fa-regular fa-pen"></i>
                         <span>NOTAS</span>
                     </button>
                 </a>
-
                 <a href="{{ url_for('Pomodoro') }}">
                     <button class="menu-icon">
                         <i class="fa-regular fa-clock"></i>
                         <span>POMODORO</span>
                     </button>
                 </a>
-
-                <a href="">
-                    <button class="menu-icon">
-                        <i class="fa-regular fa-bell"></i>
-                        <span>LEMBRETES</span>
-                    </button>
-                </a>
-
                 <a href="">
                     <button class="menu-icon">
                         <i class="fa-solid fa-bed"></i>
                         <span>ANTI-STRESS</span>
                     </button>
                 </a>
-
-                <a href="">
-                    <button class="menu-icon">
-                        <i class="fa-regular fa-calendar"></i>
-                        <span>CALENDARIO</span>
-
-                    </button>
-                </a>
             </div>
-
             <div class="footer">
                 <hr>
-<!--                <div class="profile">-->
-<!--                    <div class="box-profile">-->
-<!--                        <div class="image">-->
-<!--                            <div class="img">-->
-<!--                                <img src="https://i.pinimg.com/736x/83/aa/c4/83aac46334a5fa08e7fabe082a037188.jpg" alt="">-->
-<!--                            </div>-->
-<!--                        </div>-->
+                <div class="profile">
+                    <div class="box-profile">
+                        <div class="image">
+                            <div class="img">
+                                <img src="https://i.pinimg.com/736x/83/aa/c4/83aac46334a5fa08e7fabe082a037188.jpg" alt="">
+                            </div>
+                        </div>
 
-<!--                        <div class="text header-text">-->
-<!--                            <span class="name">{{ user.nome }}</span>-->
-<!--                            <span class="profession">Service premium</span>-->
-<!--                        </div>-->
+                        <div class="text header-text">
+                            <span class="name">{{ user.nome }}</span>
+                            <span class="profession">Service premium</span>
+                        </div>
 
-<!--                    </div>-->
-<!--                </div>-->
+                    </div>
+                </div>
 
                 <div class="upgrade">
                     <i class="fa-solid fa-bolt-lightning"></i><span>UPGRADE</span>

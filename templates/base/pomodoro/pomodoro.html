@@ -10,39 +10,41 @@
 
 {% block content %}
     <main>
-        <div class="pomodoro">
-            <div class="time-tab">
-                <button class="button-tab">POMODORO</button>
-                <button class="button-tab">SHORT</button>
-                <button class="button-tab">LONG</button>
-            </div>
-            <div class="time-view">
-                <span id="cronometro"> 00 : 00 </span>
-            </div>
-            <div class="time-tools">
-                <button class="play-button" id="iniciar"><i class="fa-solid fa-play"></i></button>
-                <button class="reload-button" id="zerar"><i class="fa-solid fa-rotate-right"></i></button>
-            </div>
-        </div>
-
-        <div class="toDo">
-            <div class="create-field">
-                <div class="input-field">
-                    <input type="text" maxlength="40" id="field">
-                    <button><i class="fa-solid fa-pen" onclick="Create()"></i></button>
+        <div class="block-group">
+            <div class="pomodoro">
+                <div class="time-tab">
+                    <button class="button-tab">POMODORO</button>
+                    <button class="button-tab">SHORT</button>
+                    <button class="button-tab">LONG</button>
+                </div>
+                <div class="time-view">
+                    <span id="cronometro"> 00 : 00 </span>
+                </div>
+                <div class="time-tools">
+                    <button class="play-button" id="iniciar"><i class="fa-solid fa-play"></i></button>
+                    <button class="reload-button" id="zerar"><i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             </div>
-            <div class="group" id="group">
-                {% for card in box %}
-                    <div class="mini-card" id="#{{ card.id }}">
-                            <input class="check" type="checkbox">
-                            <input class="texto" type="text" maxlength="40" value="{{ card.content }}">
-                        <div>
-                            <button onclick="Update({{ card.id }})">U</button>
-                            <button onclick="Delete({{ card.id }})">D</button>
-                        </div>
+
+            <div class="toDo">
+                <div class="create-field">
+                    <div class="input-field">
+                        <input type="text" maxlength="40" id="field">
+                        <button style="font-size: 20px;" onclick="Create()"><i class="fa-solid fa-circle-caret-right"></i></button>
                     </div>
-                {% endfor %}
+                </div>
+                <div class="group" id="group">
+                    {% for card in box %}
+                        <div class="mini-card" id="#{{ card.id }}">
+                                <input class="check" type="checkbox">
+                                <input class="texto" type="text" maxlength="40" value="{{ card.content }}">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <button onclick="Update({{ card.id }})" id="save"><i class="fa-regular fa-floppy-disk"></i></button>
+                                <button onclick="Delete({{ card.id }})" id="delete"><i class="fa-regular fa-trash-can-xmark"></i></button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </main>
