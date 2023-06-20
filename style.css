@@ -1,0 +1,233 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+section{
+    position: relative;
+    width: 100%;
+    min-width: 100vh;
+    padding: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+ .another-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgb(199, 8, 8);
+    height: 100vh;
+    position: relative;
+}
+
+.waves{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.wave-1{
+    animation: moveWave1 3s ease-in-out infinite alternate;
+}
+
+@keyframes moveWave1 {
+    from{
+        transform: translateX(-100px);
+    }
+}
+
+.wave-2{
+    animation: moveWave2 3s 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes moveWave2 {
+    from{
+        transform: translateX(-80px);
+    }
+}
+
+.wave-3{
+    animation: moveWave3 3s 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes moveWave3 {
+    from{
+        transform: translateX(-60px);
+    }
+}
+
+.another-section-two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgb(8, 107, 199);
+    height: 100vh;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo{
+    position: relative;
+    max-width: 80px;
+    text-decoration: none;
+    color: #96ba93;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+header span{
+    color:  #567356;
+}
+
+header ul{
+    position: relative;
+    display: flex;
+}
+
+header li{
+    list-style: none;
+}
+
+header ul li a{
+    display: inline-block;
+    color: rgb(3, 99, 3);
+    font-weight: 300;
+    text-decoration: none;
+    margin-left: 40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .textBox{
+    position: relative;
+    max-width: 600px;
+}
+
+.content .textBox h2{
+    color: rgb(0, 3, 0);
+    font-size: 4em;
+    line-height: 1.2em;
+    font-weight: 300;
+}
+
+.content .textBox span.title{
+    color:#96ba93;
+    font-weight: 900;
+}
+.content .textBox span.titleBold{
+    color:  #567356;
+    font-weight: 900;
+}
+
+.content .textBox button{
+    margin-top: 30px;
+    background-color: #567356 ;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    color: white;
+    border: 0px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.content .textBox button:hover{
+    background-color: #96ba93;
+}
+
+.content .imgBox{
+    width: 600px;
+    height: 450px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+
+.content .imgBox img{
+    max-width: 340px;
+}
+
+.thumb{
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.thumb li{ 
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.thumb li:hover{
+    transform: translateY(-15px);
+}
+.thumb li img{
+    max-width: 60px;
+}
+.thumb li img.imgThumb{
+    height: 80px;
+}
+
+.sci{
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sci li{
+    list-style: none;
+}
+
+.sci li a{
+    display: inline-block;
+    margin: 5px 0;
+    transform: scale(0.6);
+    filter: invert(1);
+}
+
+.circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #96ba93;
+    clip-path: circle(550px at right 700px);
+}
