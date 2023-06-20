@@ -35,9 +35,14 @@
 }
 
 main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard{
     display: grid;
-    grid-template-columns: repeat(3, 450px);
-    grid-template-rows: repeat(3, 225px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 0.75fr);
     grid-column-gap: 0px;
     grid-gap: 5px;
 
@@ -58,7 +63,6 @@ main .boxs-grid{
 main .welcome{
     background-color: rgb(255, 255, 255);
     grid-area: 1 / 1 / 2 / 3;
-
     display: grid;
     grid-template-columns: 20% 70%;
     padding: 10px;

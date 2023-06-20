@@ -10,22 +10,19 @@
 
 {% block content %}
     <main>
-        <div class="welcome boxs-grid">
-            <div class="welcome-img"><i class="fa-regular fa-user"></i></div>
-            <div class="welcome-desc">
-                <span style="font-size: 50px;">Bem-vindo(a) {{ user.nome }}</span>
-                <span>Vamos produzir!</span>
+        <div class="dashboard">
+            <div class="welcome boxs-grid">
+                <div class="welcome-img"><i class="fa-regular fa-user"></i></div>
+                <div class="welcome-desc">
+                    <span style="font-size: 50px;">Bem-vindo(a) {{ user.nome }}</span>
+                    <span>Vamos produzir!</span>
+                </div>
             </div>
-        </div>
-        <div class="card-content boxs-grid"></div>
-        <div class="sketch boxs-grid">
-            <span>BLOCO DE RASCUNHO</span>
-            <textarea id="sketch-field" placeholder="Digite aqui...">
-            {% if sketch %}
-                {{sketch.content}}
-            {% else %}
-            {% endif %}
-            </textarea>
+            <div class="card-content boxs-grid"></div>
+            <div class="sketch boxs-grid">
+                <span>BLOCO DE RASCUNHO</span>
+                <textarea id="sketch-field" placeholder="Digite aqui...">{{ papel.content }}</textarea>
+            </div>
         </div>
     </main>
 {% endblock %}

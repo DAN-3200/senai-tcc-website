@@ -13,25 +13,24 @@ from main import (
     app, # Aplicação
     db, # Database
 )
-from models.model import sketch, notes
+from models.model import rascunho
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def Dashboard():
-    rascunho = notes.query.filter_by(fk_user=current_user.id) or False
-    return render_template("base/dashboard/dashboard.html", user=current_user, sketch=rascunho)
+    papel = rascunho.query.filter_by(fk_user=current_user.id).first()
+    return render_template("base/dashboard/dashboard.html", user=current_user, papel=papel)
 
 @app.route('/sketch', methods=['GET', 'POST'])
+@login_required
 def sketch():
     Data = request.get_json()
     print(Data.get('text'))
 
-    rascunho = sketch(Data.get('text'), current_user.id)
-
-    db.session.add(rascunho)
+    ras = rascunho.query.filter_by(fk_user=current_user.id).first()
+    ras.content = Data.get('text')
     db.session.commit()
 
     return make_response(jsonify({
-        'id' : rascunho.id,
         'status': True,
     }))
