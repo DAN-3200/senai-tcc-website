@@ -69,6 +69,11 @@ main .welcome{
     height: 100%;
     width: 100%;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
 }
 .welcome-desc{
     padding: 10px;
@@ -76,9 +81,9 @@ main .welcome{
     flex-direction: column;
 }
 
-
-main .green{
-    background-color: green;
+main .card-content{
+    background-color: rgb(255, 255, 255);
+    border-left: var(--color-p1) 20px solid;
     grid-area: 2 / 1 / 4 / 3;
 }
 

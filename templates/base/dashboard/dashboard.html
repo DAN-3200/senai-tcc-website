@@ -11,16 +11,21 @@
 {% block content %}
     <main>
         <div class="welcome boxs-grid">
-            <div class="welcome-img"></div>
+            <div class="welcome-img"><i class="fa-regular fa-user"></i></div>
             <div class="welcome-desc">
-                <span style="font-size: 50px;">Bem-vinda Isabella</span>
+                <span style="font-size: 50px;">Bem-vindo(a) {{ user.nome }}</span>
                 <span>Vamos produzir!</span>
             </div>
         </div>
-        <div class="green boxs-grid"></div>
+        <div class="card-content boxs-grid"></div>
         <div class="sketch boxs-grid">
             <span>BLOCO DE RASCUNHO</span>
-            <textarea placeholder="Digite aqui..."></textarea>
+            <textarea id="sketch-field" placeholder="Digite aqui...">
+            {% if sketch %}
+                {{sketch.content}}
+            {% else %}
+            {% endif %}
+            </textarea>
         </div>
     </main>
 {% endblock %}
