@@ -41,10 +41,10 @@ main{
 }
 .dashboard{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 0.75fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 0.75fr);
     grid-column-gap: 0px;
-    grid-gap: 5px;
+    grid-gap: 10px;
 
     justify-content: center;
     align-content: center;
@@ -62,7 +62,7 @@ main .boxs-grid{
 /* --- profile */
 main .welcome{
     background-color: rgb(255, 255, 255);
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 1 / 3 / 4;
     display: grid;
     grid-template-columns: 20% 70%;
     padding: 10px;
@@ -88,7 +88,7 @@ main .welcome{
 main .card-content{
     background-color: rgb(255, 255, 255);
     border-left: var(--color-p1) 20px solid;
-    grid-area: 2 / 1 / 4 / 3;
+    grid-area: 3 / 1 / 5 / 4;
 }
 
 /* --- rascunho */
@@ -99,7 +99,7 @@ main .sketch{
     border-radius: 5px;
     background-color: #ffec9d;
     border: 2.5px solid #888893;
-    grid-area: 1 / 3 / 4 / 4;
+    grid-area: 1 / 4 / 3 / 5;
 }
 
 .sketch span {

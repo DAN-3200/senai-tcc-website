@@ -14,9 +14,9 @@ main{
 /* -- pomodoro ---------------------------------------------------- */
 .block-group{
     display: grid;
-    width: calc(100% - 300px);
+    width: calc(100% - 200px);
     max-width: 1300px;
-    height: 720px;
+    height: 600px;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
@@ -188,7 +188,7 @@ main{
     background-color: transparent;
     cursor: pointer;
 }
-.input-field button:active{
+.input-field button:active, .mini-card button:active{
     transform: translateY(2px);
 }
 

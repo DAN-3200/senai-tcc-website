@@ -39,5 +39,6 @@ from routes import (
     system_notes,
     system_pomodoro,
     system_dashboard,
+    system_stress
 )
 

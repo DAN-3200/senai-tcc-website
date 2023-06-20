@@ -1,0 +1,32 @@
+{% extends "base/sidebar.html" %}
+
+{% block title %}
+    <title id="time-title">Anti-Stress</title>
+{% endblock %}
+
+{% block links %}
+    <link href="{{ url_for('static', filename='css/stress.css')}}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="video-container">
+            <div class="overlay">
+                <div class="stress">
+                    <div class="box-pause" id="box">
+                        <button id="start"></button>
+                    </div>
+                </div>
+                <span>Widget de Respiração</span>
+            </div> <!-- Div que ficará acima do vídeo -->
+
+            <video class="background-video" autoplay muted loop>
+              <source src="{{ url_for('static', filename='img/lofi-japanese-style-room-night-time-HD-live-wallpaper.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/stress.js')}}"></script>
+{% endblock %}

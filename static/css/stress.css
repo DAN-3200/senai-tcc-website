@@ -1,0 +1,107 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    background-color: beige;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.stress{
+    /* background-color: aliceblue; */
+    height: 300px;
+    width: 300px;
+    padding: 5px;
+    border-radius: 100%;
+    border: #C7D1D6 5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+
+}
+
+.box-pause{
+    background-color: rgb(169, 242, 255);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.box-start{
+    background-color: rgb(169, 242, 255);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    transition: 1.5s;
+}
+
+
+.box-end{
+    background-color: rgb(128, 255, 128);
+    transition: 3s;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#start{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+/* ----------------- */
+.video-container {
+    position: relative;
+    width: 600px;
+    height: 500px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+
+.overlay span{
+    color: white;
+    position: relative;
+    font-size: 25px;
+    top: 50px;
+    text-decoration: underline;
+    transition: 0.2s;
+    cursor: default;
+}
+.overlay span:hover{
+    transition: 0.3s;
+    opacity: 0.5;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* o vídeo preencher completamente a div */
+    z-index: -3;
+    border-radius: 10px;
+
+}
