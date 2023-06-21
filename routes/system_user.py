@@ -23,9 +23,12 @@ def Begin_Data(id):
     db.session.add(rascunho(id))
     db.session.commit()
 
+@app.route('/', methods=['POST','GET'])
+def Start():
+    return render_template('inicio/start.html')
+
 # -- Login/Register
 @app.route('/login', methods=['POST','GET'])
-@app.route('/', methods=['POST','GET'])
 def login():
     # Agora Loga tanto com Username quanto com Email
     if request.method == "POST":
