@@ -13,13 +13,14 @@ from main import (
     app, # Aplicação
     db, # Database
 )
-from models.model import rascunho
+from models.model import rascunho, todo
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def Dashboard():
     papel = rascunho.query.filter_by(fk_user=current_user.id).first()
-    return render_template("base/dashboard/dashboard.html", user=current_user, papel=papel)
+    lista = todo.query.filter_by(fk_user=current_user.id)
+    return render_template("base/dashboard/dashboard.html", user=current_user, papel=papel, lista=lista)
 
 @app.route('/sketch', methods=['GET', 'POST'])
 @login_required

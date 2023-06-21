@@ -14,11 +14,24 @@
             <div class="welcome boxs-grid">
                 <div class="welcome-img"><i class="fa-regular fa-user"></i></div>
                 <div class="welcome-desc">
-                    <span style="font-size: 50px;">Bem-vindo(a) {{ user.nome }}</span>
+                    <span style="font-size: 40px;">Bem-vindo(a) {{ user.nome }}</span>
                     <span>Vamos produzir!</span>
                 </div>
             </div>
-            <div class="card-content boxs-grid"></div>
+            <div class="card-content boxs-grid">
+                <div class="group" id="group">
+                    {% for card in lista %}
+                        <div class="mini-card" id="#{{ card.id }}">
+                                <input class="check" type="checkbox">
+                                <input class="texto" type="text" maxlength="40" value="{{ card.content }}">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <button onclick="Update({{ card.id }})" id="save"><i class="fa-regular fa-floppy-disk"></i></button>
+                                <button onclick="Delete({{ card.id }})" id="delete"><i class="fa-regular fa-trash-can-xmark"></i></button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
             <div class="sketch boxs-grid">
                 <span>BLOCO DE RASCUNHO</span>
                 <textarea id="sketch-field" placeholder="Digite aqui...">{{ papel.content }}</textarea>
@@ -29,4 +42,5 @@
 
 {% block scripts %}
     <script src="{{ url_for('static', filename='js/dashboard.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/toDo.js')}}"></script>
 {% endblock %}
