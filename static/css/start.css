@@ -253,7 +253,11 @@ header .logo{
 }
 
 .text-card p{
+    margin-top: 20px;
+    padding: 0px 10px;
     color: #28282b;
+    text-align: left;
+    font-size: 15px;
 }
 .img-card{
     display: flex;
@@ -341,7 +345,7 @@ header .logo{
 }
 
 .dan{
-    border-top: rgb(255, 82, 82) solid 20px;
+    border-top: rgb(86, 86, 255) solid 20px;
 }
 
 .ana{
@@ -349,7 +353,7 @@ header .logo{
 }
 
 .Ed{
-    border-top: rgb(86, 86, 255) solid 20px;
+    border-top: rgb(255, 82, 82) solid 20px;
 }
 
 .joão{
