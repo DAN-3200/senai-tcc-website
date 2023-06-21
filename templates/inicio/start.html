@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/start.css') }}">
+    <title>ZenDo</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
+</head>
+<body>
+    <banner>
+        <header>
+            <a href="#" class="logo">ZEN<span style="color: #567356">DO</span></a>
+            <div class="btn-main">
+                <a href="{{ url_for('register') }}"><button>Inscrever-se</button></a>
+                <a href="{{ url_for('login') }}"><button>Entrar</button></a>
+            </div>
+        </header>
+        <div class="circle"></div>
+        <div class="tonel">
+            <div class="content">
+                <div class="textBox">
+                    <h2>Não é apenas um estilo de vida. <br> É
+                        <span class="title">ZEN</span><span class="titleBold">DO</span></h2>
+                    <p style="color: #28282b;">Tudo que você precisa para aumentar a sua produtividade na escola ou no trabalho em um lugar só, venha fazer parte da comunidade mais zen do Brasil.</p>
+                    <a href="{{ url_for('login') }}" ><button>Venha ser ZenDo</button></a>
+                    </div>
+                    <div class="imgBox">
+                        <img src="{{ url_for('static', filename='img/Geral-Do-cuate.png') }}" alt="">
+                    </div>
+            </div>
+        </div>
+    </banner>
+    <div class="middle-web">
+        <div class="toCenter">
+            <div class="text-card">
+                <span>O que é o Zendo?</span>
+                <p>
+                   Uma plataforma pessoal para estudantes que une produtividade, organização e bem-estar em um único lugar.
+                    Cuide de sua mente e corpo enquanto estuda com nosso gerenciador pessoal que oferece vídeos de alongamentos e respirações, além de recursos de organização acadêmica.
+                </p>
+            </div>
+            <div class="img-card">
+                <img src="{{ url_for('static', filename='img/Checklist-bro.png') }}" alt="">
+            </div>
+            <div class="img-card">
+                <img src="{{ url_for('static', filename='img/Mobile note list-amico.png') }}" alt="">
+            </div>
+            <div class="text-card">
+                <span>O que posso encontrar no Zendo?</span>
+                <p>
+                    No Zendo você encontra algumas funcionalidades para incentivar a melhora da sua qualidade de vida, entre essas funcionalidades estão o botão anti-stress, métodos de estudo inspirados no Pomodoro, um caderno de anotações digital, acessos e momentos de tranquilidade, estamos aqui para ajudar você a encontrar a harmonia no seu dia a dia. Descubra o poder da gestão pessoal com um toque de saúde para a sua vida!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-web">
+        <span style="align-self: center; position: relative; top: 50px; font-size: 50px; color: #28282b">Criadores do Projeto</span>
+        <div class="card-pessoal">
+            <div class="card-autor isa">
+                <div class="img-autor" ><img src="{{ url_for('static', filename='img/grupo/Isa.png') }}" alt=""></div>
+                <div class="desc-autor">
+                    <span>Isabella Souza</span>
+                </div>
+            </div>
+            <div class="card-autor down ana">
+                <div class="img-autor" ><img src="{{ url_for('static', filename='img/grupo/Anna.jpg') }}" alt=""></div>
+                <div class="desc-autor">
+                    <span>Anna Clara Caetano</span>
+                </div>
+            </div>
+            <div class="card-autor Ed">
+                <div class="img-autor" ><img src="{{ url_for('static', filename='img/grupo/Ed.png') }}" alt=""></div>
+                <div class="desc-autor">
+                    <span>Edmundo Angelo Siqueira</span>
+                </div>
+            </div>
+            <div class="card-autor dan down">
+                <div class="img-autor" ><img src="{{ url_for('static', filename='img/grupo/Dan.jpg') }}" alt=""></div>
+                <div class="desc-autor">
+                    <span>Daniel Barros Moreira</span>
+                </div>
+            </div>
+            <div class="card-autor joão">
+                <div class="img-autor" ><img src="{{ url_for('static', filename='img/grupo/Arthur.jpg') }}" alt=""></div>
+                <div class="desc-autor">
+                    <span>João Arthur Soares</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="https://github.com/DAN-3200/Back-end"><Button><i class="fa-brands fa-github"></i></Button></a>
+            <span>@Site desenvolvido durante a materia de TCC</span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function imgSlider(anything){
+            document.querySelector('.emoji').src = anything;
+        }
+        function changeCircle(color){
+            const circle = document.querySelector('.circle');
+            circle.style.background = color;
+        }
+    </script>
+</body>
+</html>

@@ -16,12 +16,19 @@ from main import (
     db, # Database
     by, # Flask-Bcrypt
 )
-from models.model import perfil
+from models.model import perfil, rascunho
 from forms.Forms import formRegister, formLogin
+
+def Begin_Data(id):
+    db.session.add(rascunho(id))
+    db.session.commit()
+
+@app.route('/', methods=['POST','GET'])
+def Start():
+    return render_template('inicio/start.html')
 
 # -- Login/Register
 @app.route('/login', methods=['POST','GET'])
-@app.route('/', methods=['POST','GET'])
 def login():
     # Agora Loga tanto com Username quanto com Email
     if request.method == "POST":
@@ -32,7 +39,7 @@ def login():
         user = perfil.query.filter_by(nome=nome).first() or perfil.query.filter_by(email=nome).first()
         if user and by.check_password_hash(user.senha, senha):
             login_user(user, remember=remember)
-            return redirect(url_for('Notes'))
+            return redirect(url_for('Dashboard'))
 
     return render_template('login/login.html', form=formLogin())
 
@@ -46,12 +53,16 @@ def logout():
 def register():
     if request.method == 'POST':
         if request.form.get('senha') == request.form.get('c_senha'):
-            db.session.add(perfil(
+            newUser = perfil(
                 nome=request.form.get('nome'),
                 senha=by.generate_password_hash(request.form.get('senha')), # senha scriptada
                 email=request.form.get('email')
-            ))
+            )
+            db.session.add(newUser)
             db.session.commit()
+
+            Begin_Data(newUser.id)
             return redirect(url_for('login'))
 
     return render_template('register/register.html', form=formRegister())
+

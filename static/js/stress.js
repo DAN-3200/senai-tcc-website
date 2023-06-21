@@ -1,3 +1,4 @@
+
 var btnAntiStress = document.getElementById("btnAntiStress");
 var modal = document.getElementById("modal");
 var closeBtn = document.getElementsByClassName("close")[0];
@@ -115,3 +116,27 @@ btnAntiStress.addEventListener("mousedown", iniciarArrastamento);
             var modalBody = document.querySelector('.modal-body');
             modalBody.innerHTML = '<ul><li class="modal-list" onclick="playMusic(\'jfKfPfyJRdk\')">Música</li><li class="modal-list" onclick="playPlaylist(\'PL39t2B92wpzmEd3lfJ8_j9Y_YvwYJjliw\')">Alongamentos</li><li class="modal-list" onclick="playPlaylist(\'PL39t2B92wpzmdEq5cnWzKZajo_dCxSY5D\')">Respiração</li></ul>';
         }
+
+const button = document.getElementById('start')
+const element = document.getElementById('box')
+
+
+let debounce = false;
+button.addEventListener('click', function(){
+    if(debounce != true){
+        element.classList = 'box-end'
+        debounce = true
+    } else {
+        element.classList = 'box-start'
+        debounce = false
+    }
+})
+
+const box = document.getElementById('box')
+
+box.addEventListener('transitionend', function(event){
+    if(event.elapsedTime = 3){
+        element.classList = 'box-start'
+    }
+})
+

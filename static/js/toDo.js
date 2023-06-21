@@ -26,9 +26,9 @@ function Read(DICT){
     item.innerHTML = `
         <input name="check" type="checkbox">
         <input class="texto" type="text" maxlength="40" value="${DICT.content}">
-        <div>
-            <button onclick="Update(${DICT.id})">U</button>
-            <button onclick="Delete(${DICT.id})">D</button>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <button onclick="Update(${DICT.id})"><i class="fa-regular fa-floppy-disk"></i></button>
+            <button onclick="Delete(${DICT.id})"><i class="fa-regular fa-trash-can-xmark"></i></button>
         </div>
     `
     document.getElementById('group').appendChild(item)

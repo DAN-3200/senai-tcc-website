@@ -58,7 +58,7 @@ var Cronometro = function(div, btnIniciar, btnParar, btnZerar) {
 
   this.atualizar = function() {
     var str =
-      (este.minuto < 10 ? "3" + este.minuto : este.minuto) + " : " +
+      (este.minuto < 10 ? "0" + este.minuto : este.minuto) + " : " +
       (este.segundo < 10 ? "0" + este.segundo : este.segundo);
     div.innerHTML = str;
     document.getElementById('time-title').textContent = str;
@@ -89,8 +89,8 @@ var Cronometro = function(div, btnIniciar, btnParar, btnZerar) {
     este.start = false;
   }
   this.zerar = function() {
-    este.minuto = 0;
-    este.segundo = 0;
+    este.minuto = 29;
+    este.segundo = 00;
     este.atualizar();
   }
   this.setIntervaloAlarmeMinutos = function(minutos) {

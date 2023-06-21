@@ -6,6 +6,7 @@
 
 {% block links %}
     <link href="{{ url_for('static', filename='css/notes.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static', filename='css/stress.css')}}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block content %}
@@ -38,6 +39,27 @@
             </div>
         </div>
     </main>
+<div class="button" id="btnAntiStress" onclick="showModal()"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="optionsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="optionsModalLabel">Opções Anti-Stress</h2>
+                    <span class="close" onclick="hideModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li class="modal-list" onclick="playMusic('jfKfPfyJRdk')">Música</li>
+                        <li class="modal-list" onclick="playPlaylist('PL39t2B92wpzmEd3lfJ8_j9Y_YvwYJjliw')">Alongamentos</li>
+                        <li class="modal-list" onclick="playPlaylist('PL39t2B92wpzmdEq5cnWzKZajo_dCxSY5D')">Respiração</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script src="{{ url_for('static', filename='js/stress.js')}}"></script>
 {% endblock %}
 
 {% block scripts %}

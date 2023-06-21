@@ -55,23 +55,24 @@ class todo(db.Model):
         self.content = content
         self.fk_user = user
 
-# class sketch(db.Model):
-#     __tablename__ = "sketch"
-#
-#     fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
-#     content = db.Column(db.String(300), nullable=False)
-#     def __int__(self, content, user):
-#         self.content = content
-#         self.fk_user = user
-#
-# class pomodoro(db.Model):
-#     __tablename__ = "pomodoro"
-#
-#     fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
-#     normal = db.Column(db.Float, nullable=False, default=25)
-#     short = db.Column(db.Float, nullable=False, default=5)
-#     long = db.Column(db.Float, nullable=False, default=15)
-#     def __int__(self, normal, short, long):
-#         self.normal = normal
-#         self.short = short
-#         self.long = long
+class rascunho(db.Model):
+    __tablename__ = "rascunho"
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
+    content = db.Column(db.String(500))
+    def __init__(self, fk_user):
+        self.fk_user = fk_user
+
+class pomodoro(db.Model):
+    __tablename__ = "pomodoro"
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    fk_user = db.Column(db.Integer, db.ForeignKey('perfil.id'), nullable=False)
+    normal = db.Column(db.Float, nullable=False, default=25)
+    short = db.Column(db.Float, nullable=False, default=5)
+    long = db.Column(db.Float, nullable=False, default=15)
+    def __int__(self, normal, short, long):
+        self.normal = normal
+        self.short = short
+        self.long = long
