@@ -36,6 +36,8 @@ pip install -r requeriments.txt
 ```powershell
 py app.py
 ```
+> [!IMPORTANT]
+> Para o funcionamento do app, execute antecipademente o banco de dados 
 
 ## Contribuidores
 
